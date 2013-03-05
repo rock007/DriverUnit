@@ -156,3 +156,57 @@ Stack trace:
 REQUEST_URI=/myii/index.php?r=site/test
 in D:\Program Files\Apache Group\Apache2\htdocs\myii\protected\controllers\SiteController.php (115)
 in D:\Program Files\Apache Group\Apache2\htdocs\myii\index.php (15)
+2013/03/05 18:29:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "UpdateProfile".' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php:484
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(271): CController->missingAction('UpdateProfile')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('UpdateProfile')
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('webservice/Upda...')
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 E:\GitHub\DriverUnit\index.php(15): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/UpdateProfile
+---
+2013/03/05 18:30:24 [error] [php] Use of undefined constant UpdateProfile - assumed 'UpdateProfile' (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:104)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(15): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/UpdateProfile
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (104)
+in E:\GitHub\DriverUnit\index.php (15)
+2013/03/05 18:39:59 [error] [php] Undefined index: curVer (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:24)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(15): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/CheckVersion
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (24)
+in E:\GitHub\DriverUnit\index.php (15)
+2013/03/05 18:40:43 [error] [php] Undefined index: curVer (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:25)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(15): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/CheckVersion
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (25)
+in E:\GitHub\DriverUnit\index.php (15)
+2013/03/05 18:41:37 [error] [php] Undefined index: curVer (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:25)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(15): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/CheckVersion
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (25)
+in E:\GitHub\DriverUnit\index.php (15)
