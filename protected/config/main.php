@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'我的测试项目',
+	'name'=>'测试项目',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -37,7 +37,7 @@ return array(
 			'allowAutoLogin'=>true,
 		),
 		// uncomment the following to enable URLs in path-format
-		/*
+		/**
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
@@ -46,7 +46,7 @@ return array(
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
-		*/
+		**/
 		
 		/***
 		'db'=>array(
@@ -54,13 +54,12 @@ return array(
 		),
 		**/
 		
-		// uncomment the following to use a MySQL database
-		
+		// uncomment the following to use a MySQL database				
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=mrd',
+			'connectionString' => 'mysql:host=121.197.13.97;port=3306;dbname=DriverUnit',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '123',
+			'username' => 'spring',
+			'password' => 'spring1999',
 			'charset' => 'utf8',
 		),
 		
@@ -76,11 +75,11 @@ return array(
 					'levels'=>'error, warning',
 				),
 				// uncomment the following to show log messages on web pages
-				/*
+				/**
 				array(
 					'class'=>'CWebLogRoute',
 				),
-				*/
+				**/
 			),
 		),
 	),

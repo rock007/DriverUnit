@@ -210,3 +210,37 @@ Stack trace:
 REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/CheckVersion
 in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (25)
 in E:\GitHub\DriverUnit\index.php (15)
+2013/03/06 10:59:07 [error] [php] Undefined variable: result (E:\GitHub\DriverUnit\protected\models\Response.php:9)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebServiceController->actionRegisterUser()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 E:\GitHub\DriverUnit\index.php(15): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/RegisterUser
+in E:\GitHub\DriverUnit\protected\models\Response.php (9)
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (11)
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (59)
+2013/03/06 11:04:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "RegisterUser?phoneNum=1233".' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php:484
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(271): CController->missingAction('RegisterUser?ph...')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('RegisterUser?ph...')
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('webservice/Regi...')
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 E:\GitHub\DriverUnit\index.php(15): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/RegisterUser?phoneNum=1233
+---
+2013/03/06 14:31:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "actionLogin".' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php:484
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(271): CController->missingAction('actionLogin')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('actionLogin')
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('webservice/acti...')
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 E:\GitHub\DriverUnit\index.php(15): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/actionLogin&phoneNum=22333
+---

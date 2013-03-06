@@ -4,6 +4,8 @@ date_default_timezone_set("PRC");
 
 // change the following paths if necessary
 $yii='D:/Program Files/Apache Group/Apache2/htdocs/yii/framework/yii.php';
+
+//$yii='/data/home/htdocs/yii/framework/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
 
 // remove the following lines when in production mode

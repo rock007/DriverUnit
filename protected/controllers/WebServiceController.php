@@ -2,18 +2,6 @@
 class WebServiceController extends Controller
 {
 
-	function getPost($key){
-	
-		if(!isset($_POST[$key])){
-			
-		}
-		$keyValue=$_POST[$key];
-		if(empty($keyValue)){
-		
-		}
-		
-	}
-	
 	public function actionIndex()
 	{
 		echo CJSON::encode(array('val'=>'eeee '));
@@ -33,20 +21,10 @@ class WebServiceController extends Controller
 	 输出参数：是否升级(Boolean)；升级URL地址ApkAddress（String）
 	 ***/
 	public function actionCheckVersion(){
+				
+		$curVer=$this->getNoEmpty('curVer');
 		
-		if(!isset($_POST['curVer'])){
-		
-			echo CJSON::encode(array('curVer'=>'1.2 ','isNewVer'=>false,'msg'=>' curVer不能为空！  '));
-			return ;
-		}
-		
-		$curVer=$_POST['curVer'];
-		
-		if($curVer==null||empty($curVer)){
-			//如果为空
-			echo CJSON::encode(array('curVer'=>'1.2 ','isNewVer'=>false,'msg'=>' curVer不能为空！  '));
-		}
-		echo CJSON::encode(array('curVer'=>'1.2 ','isNewVer'=>false,'msg'=>'  '));
+		echo CJSON::encode(array('curVer'=>$curVer,'isNewVer'=>false,'apkUrl'=>'  '));
 		
 	}
 
@@ -58,7 +36,9 @@ class WebServiceController extends Controller
 	 **/
 	public function actionRegisterUser(){
 
-
+		$phoneNum= $this->getNoEmpty('phoneNum');
+		
+		echo CJSON::encode(new Response(true,'register action successfull',$phoneNum));
 	}
 
 	/**
@@ -69,7 +49,11 @@ class WebServiceController extends Controller
 	 **/
 	public function actionLogin(){
 
-
+		$phoneNum= $this->getNoEmpty('phoneNum');
+		$pwd= $this->getNoEmpty('pwd');
+		
+		echo CJSON::encode(new Response(true,'login action successfull',$phoneNum));
+		
 	}
 	/**
 	 4.搜索
@@ -78,7 +62,8 @@ class WebServiceController extends Controller
 	 输出参数：JSON结果（司机ID，司机称呼，车型，星级评价，路线，驾龄，所在地）；多条记录或无记录
 	 **/
 	public function actionSearch(){
-
+		
+		
 
 	}
 
@@ -101,7 +86,11 @@ class WebServiceController extends Controller
 	 **/
 	public function actionSubmitOrder(){
 
+		$startTime=$this->getNoEmpty('startTime');//yyyyMMdd
+		$endTime=$this->getNoEmpty('endTime');
+		$driverId=$this->getNoEmpty('driverId');
 
+		echo CJSON::encode(new Response(true,'SubmitOrder action successfull',$driverId));
 	}
 
 	/**
@@ -112,7 +101,12 @@ class WebServiceController extends Controller
 	 **/
 	public function actionUpdateProfile(){
 
-		echo "this is test ";
+		$name=$this->getNoEmpty('name');
+		$userName=$this->getNoEmpty('userName');
+		$sex=$this->getNoEmpty('sex');
+		$city=$this->getNoEmpty('city');
+		
+		echo CJSON::encode(new Response(true,'UpdateProfile action successfull',$name));		
 	}
 
 	/**
@@ -122,7 +116,12 @@ class WebServiceController extends Controller
 	 输出参数：成功/失败(Boolean)；失败原因Reason（String）
 	 **/
 	public function actionChangePwd(){
-
+		
+		$phoneNum=$this->getNoEmpty('phoneNum');
+		$oldPwd=$this->getNoEmpty('oldPwd');
+		$newPwd=$this->getNoEmpty('newPwd');
+				
+		echo CJSON::encode(new Response(true,'ChangePwd action successfull',$phoneNum));	
 
 	}
 
@@ -134,7 +133,9 @@ class WebServiceController extends Controller
 	 **/
 	public function actionCollection(){
 
-
+		$driverId=$this->getNoEmpty('driverId');
+				
+		echo CJSON::encode(new Response(true,'Collection action successfull',$driverId));	
 	}
 
 	/**

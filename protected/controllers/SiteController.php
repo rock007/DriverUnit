@@ -29,7 +29,9 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		//$this->render('index');
+		
+		$this->renderPartial('index');
 	}
 
 	/**
@@ -42,7 +44,7 @@ class SiteController extends Controller
 	    	if(Yii::app()->request->isAjaxRequest)
 	    		echo $error['message'];
 	    	else
-	        	$this->render('error', $error);
+	        	$this->renderPartial('error', $error);
 	    }
 	}
 
@@ -63,7 +65,7 @@ class SiteController extends Controller
 				$this->refresh();
 			}
 		}
-		$this->render('contact',array('model'=>$model));
+		$this->renderPartial('contact',array('model'=>$model));
 	}
 
 	/**
@@ -89,7 +91,7 @@ class SiteController extends Controller
 				$this->redirect(Yii::app()->user->returnUrl);
 		}
 		// display the login form
-		$this->render('login',array('model'=>$model));
+		$this->renderPartial('login',array('model'=>$model));
 	}
 
 	/**
@@ -101,19 +103,4 @@ class SiteController extends Controller
 		$this->redirect(Yii::app()->homeUrl);
 	}
 	
-	public function actionTest(){
-	
-		if(Yii::app()->request->isAjaxRequest){//是否ajax请求
-			$id =  (int)Yii::app()->request->getParam('id');//getparam 会获得 get post 变量 ，原来也可以接收json处理后的变量
-			$val = Yii::app()->request->getParam('val');
-			$model = $this->loadModel($id);
-			$model->remark = $val;
-			if($model->save()){
-				echo CJSON::encode(array('val'=>$model->remark));//Yii 的方法将数组处理成json数据
-			}
-		}else{
-			echo CJSON::decode(array('val'));
-			echo "no ajax request";
-		}
-	}
 }
