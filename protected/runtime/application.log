@@ -244,3 +244,184 @@ Stack trace:
 #5 {main}
 REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/actionLogin&phoneNum=22333
 ---
+2013/03/07 14:18:37 [error] [php] Undefined variable: key1 (E:\GitHub\DriverUnit\protected\models\Records.php:8)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/GetLine
+in E:\GitHub\DriverUnit\protected\models\Records.php (8)
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (183)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 14:31:05 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php:337
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Notification')
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('webservice/Noti...')
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#7 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/Notification
+---
+2013/03/07 14:32:08 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to='3333') AND ( status =0 ) ORDER BY  level desc ,id asc' at line 1. The SQL statement executed was: SELECT * FROM `message` `t` WHERE (to=:ycp0) AND ( status =0 ) ORDER BY  level desc ,id asc .
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (202)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 14:32:08 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to='3333') AND ( status =0 ) ORDER BY  level desc ,id asc' at line 1. The SQL statement executed was: SELECT * FROM `message` `t` WHERE (to=:ycp0) AND ( status =0 ) ORDER BY  level desc ,id asc ' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(202): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebServiceController->actionNotification()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Notification')
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('webservice/Noti...')
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#12 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/Notification&phoneNum=3333
+---
+2013/03/07 14:35:56 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to ='3333') AND ( status =0 ) ORDER BY  level desc ,id asc' at line 1. The SQL statement executed was: SELECT * FROM `message` `t` WHERE ( to =:ycp0) AND ( status =0 ) ORDER BY  level desc ,id asc .
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (202)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 14:35:56 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to ='3333') AND ( status =0 ) ORDER BY  level desc ,id asc' at line 1. The SQL statement executed was: SELECT * FROM `message` `t` WHERE ( to =:ycp0) AND ( status =0 ) ORDER BY  level desc ,id asc ' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(202): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebServiceController->actionNotification()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Notification')
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('webservice/Noti...')
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#12 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/Notification&phoneNum=3333
+---
+2013/03/07 14:36:33 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to='3333') AND ( status =0 ) ORDER BY  level desc ,id asc' at line 1. The SQL statement executed was: SELECT * FROM `message` `t` WHERE (to=:ycp0) AND ( status =0 ) ORDER BY  level desc ,id asc .
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (202)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 14:36:33 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to='3333') AND ( status =0 ) ORDER BY  level desc ,id asc' at line 1. The SQL statement executed was: SELECT * FROM `message` `t` WHERE (to=:ycp0) AND ( status =0 ) ORDER BY  level desc ,id asc ' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(202): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebServiceController->actionNotification()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Notification')
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('webservice/Noti...')
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#12 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/Notification&phoneNum=3333
+---
+2013/03/07 14:37:52 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to  ='3333' ) AND ( status =0 ) ORDER BY  level desc ,id asc' at line 1. The SQL statement executed was: SELECT * FROM `message` `t` WHERE ( to  ='3333' ) AND ( status =0 ) ORDER BY  level desc ,id asc .
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (202)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 14:37:52 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to  ='3333' ) AND ( status =0 ) ORDER BY  level desc ,id asc' at line 1. The SQL statement executed was: SELECT * FROM `message` `t` WHERE ( to  ='3333' ) AND ( status =0 ) ORDER BY  level desc ,id asc ' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(202): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebServiceController->actionNotification()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Notification')
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('webservice/Noti...')
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#12 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/Notification&phoneNum=3333
+---
+2013/03/07 15:00:56 [error] [php] Use of undefined constant phoneNum - assumed 'phoneNum' (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:152)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/CollectionHistory&phoneNum=33445
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (152)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 15:30:58 [error] [php] Object of class DateTime could not be converted to string (D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\schema\CDbColumnSchema.php:141)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(787): Account->insert()
+#1 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(59): Account->save()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebServiceController->actionRegisterUser()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/RegisterUser&phoneNum=33445&pwd=344
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (59)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 15:32:30 [error] [php] date() expects at least 1 parameter, 0 given (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:57)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/RegisterUser&phoneNum=33445&pwd=344
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (57)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 15:33:17 [error] [php] date() expects at least 1 parameter, 0 given (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:57)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/RegisterUser&phoneNum=33445&pwd=344
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (57)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 15:35:08 [error] [php] Object of class DateTime could not be converted to string (D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\schema\CDbColumnSchema.php:141)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(787): Account->insert()
+#1 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(59): Account->save()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebServiceController->actionRegisterUser()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/RegisterUser&phoneNum=33445&pwd=344
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (59)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 15:35:37 [error] [php] Undefined variable: driverId (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:61)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/RegisterUser&phoneNum=33445&pwd=344
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (61)
+in E:\GitHub\DriverUnit\index.php (17)

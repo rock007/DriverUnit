@@ -36,9 +36,33 @@ class WebServiceController extends Controller
 	 **/
 	public function actionRegisterUser(){
 
-		$phoneNum= $this->getNoEmpty('phoneNum');
+			$account = new Account();
+
+			$account->phoneNum=$this->getNoEmpty('phoneNum');
+			
+			//检查是否已经存在
+			$rec=Account::model()->findByPk( $account->phoneNum);
+			
+			if(count($rec)>0){
+				
+				echo CJSON::encode(new Response(false,'phoneNum is exist!',$account->phoneNum));	
+				
+				return;
+			}
+			
+			$account->pwd=$this->getNoEmpty('pwd');
+			$account->createDt=Date('Y-m-d H:i:s');
+			$account->status=0;
+			$account->regKey="";
+			$account->lastLoginDt= Date('Y-m-d H:i:s');
+			
+            if($account->save())
+            {
+                echo CJSON::encode(new Response(true,'register action successfull',$account->phoneNum));	
+            } else {
+                echo CJSON::encode(new Response(false,'register action fail ',$account->phoneNum));	
+            }
 		
-		echo CJSON::encode(new Response(true,'register action successfull',$phoneNum));
 	}
 
 	/**
@@ -75,6 +99,16 @@ class WebServiceController extends Controller
 	 **/
 	public function actionDriverDetail(){
 
+			$criteria =new CDbCriteria(); 
+			$id=$this->getNoEmpty('id');
+						
+			$criteria->compare("id", $id);
+						
+			$criteria->order=" id desc ";
+			
+			$devices=Driver::model()->findAll($criteria);
+
+			echo CJSON::encode(new Records(sizeof($devices),$devices) );
 
 	}
 
@@ -90,7 +124,7 @@ class WebServiceController extends Controller
 		$endTime=$this->getNoEmpty('endTime');
 		$driverId=$this->getNoEmpty('driverId');
 
-		echo CJSON::encode(new Response(true,'SubmitOrder action successfull',$driverId));
+		echo CJSON::encode(new Response(true,'SubmitOrder action successfull',""));
 	}
 
 	/**
@@ -127,15 +161,25 @@ class WebServiceController extends Controller
 
 	/**
 	 9.收藏
-	 接口关键字：Collection
+	 接口关键字：AddCollection
 	 输入参数：司机ID（Int）
 	 输出参数：成功/失败(Boolean)；失败原因Reason（String）
 	 **/
-	public function actionCollection(){
+	public function actionAddCollection(){
 
-		$driverId=$this->getNoEmpty('driverId');
-				
-		echo CJSON::encode(new Response(true,'Collection action successfull',$driverId));	
+			$Drivercollect = new Drivercollect();
+            
+			$Drivercollect->phoneNum=$this->getNoEmpty('phoneNum');
+			$Drivercollect->driverId=$this->getNoEmpty('driverId');
+			$Drivercollect->remarks=$this->getKey('remarks');
+			$Drivercollect->createDt=Date('Y-m-d H:i:s');
+			
+            if($Drivercollect->save())
+            {
+                echo CJSON::encode(new Response(true,'AddCollection action successfull',""));	
+            } else {
+                echo CJSON::encode(new Response(false,'AddCollection action fail ',""));	
+            }			
 	}
 
 	/**
@@ -146,6 +190,16 @@ class WebServiceController extends Controller
 	 **/
 	public function actionCollectionHistory(){
 
+			$criteria =new CDbCriteria(); 
+			$phoneNum=$this->getNoEmpty('phoneNum');
+						
+			$criteria->addCondition(" 'phoneNum'  ='".$phoneNum."' ");
+						
+			$criteria->order=" id desc ";
+			
+			$collections=Drivercollect::model()->findAll($criteria);
+
+			echo CJSON::encode(new Records(sizeof($collections),$collections) );
 
 	}
 
@@ -157,19 +211,61 @@ class WebServiceController extends Controller
 	 **/
 	public function actionOrderHistory(){
 
+			$criteria =new CDbCriteria(); 
+			$phoneNum=$this->getNoEmpty('phoneNum');
+						
+			$criteria->addCondition(" 'phoneNum'  ='".$phoneNum."' ");
+						
+			$criteria->order=" id desc ";
+			
+			$orders=Order::model()->findAll($criteria);
 
+			echo CJSON::encode(new Records(sizeof($orders),$orders) );
 	}
 
 	/**
 	 12.点评投诉
-	 接口关键字：Comments
+	 接口关键字：AddComments
 	 输入参数：OrderID（Int），点评星级（Int），点评内容（String）
 	 输出参数：成功/失败(Boolean)；失败原因Reason（String）
 	 **/
-	public function actionComments(){
+	public function actionAddComments(){
 
-
+	 		$comment = new Comment();
+            
+	 		$comment->mtype=$this->getNoEmpty('mtype');
+	 		$comment->refId=$this->getNoEmpty('refId');
+	 		$comment->star=$this->getNoEmpty('star');
+	 		$comment->remarks=$this->getKey('remarks');
+	 		$comment->createDt=Date('Y-m-d H:i:s');
+	 		
+            if($comment->save())
+            {
+                echo CJSON::encode(new Response(true,'AddComments action successfull',""));	
+            } else {
+                echo CJSON::encode(new Response(false,'AddComments action fail ',""));	
+            }
 	}
+	
+	/*
+	 * 获取评价
+	 * */
+	public function actionComments(){
+	
+			$criteria =new CDbCriteria(); 
+			$refId=$this->getNoEmpty('refId');
+			$mtype=$this->getNoEmpty('mtype');
+			
+			$criteria->addCondition(" 'refId'  ='".$refId."' ");
+			$criteria->addCondition(" mtype =".$mtype);
+			
+			$criteria->order=" id asc ";
+			
+			$comments=Comment::model()->findAll($criteria);
+
+			echo CJSON::encode(new Records(sizeof(comments),comments) );
+	}
+	
 	/**
 	 13.获取所有路线和目的地
 	 接口关键字：GetLine
@@ -178,7 +274,9 @@ class WebServiceController extends Controller
 	 **/
 	public function actionGetLine(){
 
-
+		$lineArray=Line::model()->findAll();
+		
+		echo CJSON::encode(new Records(sizeof($lineArray),$lineArray) );
 	}
 
 	/**
@@ -188,8 +286,18 @@ class WebServiceController extends Controller
 	 输出参数：JSON结果（通知ID，通知内容String）；多条记录或无记录
 	 **/
 	public function actionNotification(){
+		
+			$criteria =new CDbCriteria(); 
+			$phoneNum=$this->getNoEmpty('phoneNum');
+			
+			$criteria->addCondition(" 'to'  ='".$phoneNum."' ");
+			$criteria->addCondition(" status =0 ");
+			
+			$criteria->order=" level desc ,id asc ";
+			
+			$msgList=Message::model()->findAll($criteria);
 
-
+			echo CJSON::encode(new Records(sizeof($msgList),$msgList) );
 	}
 }
  
