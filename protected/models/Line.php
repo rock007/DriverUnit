@@ -40,6 +40,7 @@ class Line extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array(' name, startAddress, endAddress', 'required'),
 			array('interval', 'numerical', 'integerOnly'=>true),
 			array('name, startAddress, endAddress', 'length', 'max'=>20),
 			array('des', 'length', 'max'=>255),
@@ -68,12 +69,12 @@ class Line extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'startAddress' => 'Start Address',
-			'endAddress' => 'End Address',
-			'interval' => 'Interval',
-			'des' => 'Des',
-			'createDt' => 'Create Dt',
+			'name' => '路线名',
+			'startAddress' => '开始地',
+			'endAddress' => '目的地',
+			'interval' => '全程(天)',
+			'des' => '描述',
+			'createDt' => '创建日期',
 		);
 	}
 

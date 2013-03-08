@@ -8,7 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'测试项目',
-
+	'language'=>'zh_cn',
 	// preloading 'log' component
 	'preload'=>array('log'),
 
@@ -17,7 +17,8 @@ return array(
 		'application.models.*',
 		'application.components.*',
 	),
-
+	//主题
+	'theme'=>'abound',
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
 		
