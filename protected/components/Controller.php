@@ -42,4 +42,9 @@ class Controller extends CController
 			return "";
 		}
 	}
+	
+	function setCurPg($pg){
+		global $pgname;
+		$pgname=$pg;
+	}
 }

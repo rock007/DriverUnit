@@ -4,7 +4,6 @@
  * This is the model class for table "account".
  *
  * The followings are the available columns in table 'account':
- * @property integer $id
  * @property string $phoneNum
  * @property string $pwd
  * @property string $createDt
@@ -46,7 +45,7 @@ class Account extends CActiveRecord
 			array('createDt, lastLoginDt', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, phoneNum, pwd, createDt, status, regKey, lastLoginDt', 'safe', 'on'=>'search'),
+			array('phoneNum, pwd, createDt, status, regKey, lastLoginDt', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,7 +66,6 @@ class Account extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
 			'phoneNum' => 'Phone Num',
 			'pwd' => 'Pwd',
 			'createDt' => 'Create Dt',
@@ -88,7 +86,6 @@ class Account extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
 		$criteria->compare('phoneNum',$this->phoneNum,true);
 		$criteria->compare('pwd',$this->pwd,true);
 		$criteria->compare('createDt',$this->createDt,true);

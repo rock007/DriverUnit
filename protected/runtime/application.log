@@ -244,3 +244,448 @@ Stack trace:
 #5 {main}
 REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/actionLogin&phoneNum=22333
 ---
+2013/03/07 14:18:37 [error] [php] Undefined variable: key1 (E:\GitHub\DriverUnit\protected\models\Records.php:8)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/GetLine
+in E:\GitHub\DriverUnit\protected\models\Records.php (8)
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (183)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 14:31:05 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php:337
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Notification')
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('webservice/Noti...')
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#7 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/Notification
+---
+2013/03/07 14:32:08 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to='3333') AND ( status =0 ) ORDER BY  level desc ,id asc' at line 1. The SQL statement executed was: SELECT * FROM `message` `t` WHERE (to=:ycp0) AND ( status =0 ) ORDER BY  level desc ,id asc .
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (202)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 14:32:08 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to='3333') AND ( status =0 ) ORDER BY  level desc ,id asc' at line 1. The SQL statement executed was: SELECT * FROM `message` `t` WHERE (to=:ycp0) AND ( status =0 ) ORDER BY  level desc ,id asc ' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(202): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebServiceController->actionNotification()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Notification')
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('webservice/Noti...')
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#12 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/Notification&phoneNum=3333
+---
+2013/03/07 14:35:56 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to ='3333') AND ( status =0 ) ORDER BY  level desc ,id asc' at line 1. The SQL statement executed was: SELECT * FROM `message` `t` WHERE ( to =:ycp0) AND ( status =0 ) ORDER BY  level desc ,id asc .
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (202)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 14:35:56 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to ='3333') AND ( status =0 ) ORDER BY  level desc ,id asc' at line 1. The SQL statement executed was: SELECT * FROM `message` `t` WHERE ( to =:ycp0) AND ( status =0 ) ORDER BY  level desc ,id asc ' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(202): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebServiceController->actionNotification()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Notification')
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('webservice/Noti...')
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#12 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/Notification&phoneNum=3333
+---
+2013/03/07 14:36:33 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to='3333') AND ( status =0 ) ORDER BY  level desc ,id asc' at line 1. The SQL statement executed was: SELECT * FROM `message` `t` WHERE (to=:ycp0) AND ( status =0 ) ORDER BY  level desc ,id asc .
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (202)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 14:36:33 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to='3333') AND ( status =0 ) ORDER BY  level desc ,id asc' at line 1. The SQL statement executed was: SELECT * FROM `message` `t` WHERE (to=:ycp0) AND ( status =0 ) ORDER BY  level desc ,id asc ' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(202): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebServiceController->actionNotification()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Notification')
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('webservice/Noti...')
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#12 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/Notification&phoneNum=3333
+---
+2013/03/07 14:37:52 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to  ='3333' ) AND ( status =0 ) ORDER BY  level desc ,id asc' at line 1. The SQL statement executed was: SELECT * FROM `message` `t` WHERE ( to  ='3333' ) AND ( status =0 ) ORDER BY  level desc ,id asc .
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (202)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 14:37:52 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to  ='3333' ) AND ( status =0 ) ORDER BY  level desc ,id asc' at line 1. The SQL statement executed was: SELECT * FROM `message` `t` WHERE ( to  ='3333' ) AND ( status =0 ) ORDER BY  level desc ,id asc ' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1287): CDbCommand->queryAll()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#3 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(202): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebServiceController->actionNotification()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Notification')
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('webservice/Noti...')
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#11 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#12 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/Notification&phoneNum=3333
+---
+2013/03/07 15:00:56 [error] [php] Use of undefined constant phoneNum - assumed 'phoneNum' (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:152)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/CollectionHistory&phoneNum=33445
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (152)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 15:30:58 [error] [php] Object of class DateTime could not be converted to string (D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\schema\CDbColumnSchema.php:141)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(787): Account->insert()
+#1 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(59): Account->save()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebServiceController->actionRegisterUser()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/RegisterUser&phoneNum=33445&pwd=344
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (59)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 15:32:30 [error] [php] date() expects at least 1 parameter, 0 given (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:57)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/RegisterUser&phoneNum=33445&pwd=344
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (57)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 15:33:17 [error] [php] date() expects at least 1 parameter, 0 given (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:57)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/RegisterUser&phoneNum=33445&pwd=344
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (57)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 15:35:08 [error] [php] Object of class DateTime could not be converted to string (D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\schema\CDbColumnSchema.php:141)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(787): Account->insert()
+#1 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(59): Account->save()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebServiceController->actionRegisterUser()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/RegisterUser&phoneNum=33445&pwd=344
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (59)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/07 15:35:37 [error] [php] Undefined variable: driverId (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:61)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/RegisterUser&phoneNum=33445&pwd=344
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (61)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/08 10:32:55 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'DriverUnit.tbl_user' doesn't exist. The SQL statement executed was: SHOW COLUMNS FROM `tbl_user`.
+in E:\GitHub\DriverUnit\protected\models\User.php (21)
+in E:\GitHub\DriverUnit\protected\components\UserIdentity.php (24)
+in E:\GitHub\DriverUnit\protected\models\LoginForm.php (54)
+2013/03/08 10:32:55 [error] [exception.CDbException] exception 'CDbException' with message 'The table "tbl_user" for active record class "User" cannot be found in the database.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php:2264
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(379): CActiveRecordMetaData->__construct(Object(User))
+#1 E:\GitHub\DriverUnit\protected\models\User.php(21): CActiveRecord::model('User')
+#2 E:\GitHub\DriverUnit\protected\components\UserIdentity.php(24): User::model()
+#3 E:\GitHub\DriverUnit\protected\models\LoginForm.php(54): UserIdentity->authenticate()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\validators\CInlineValidator.php(43): LoginForm->authenticate('password', Array)
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\validators\CValidator.php(197): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CModel.php(158): CValidator->validate(Object(LoginForm), NULL)
+#7 E:\GitHub\DriverUnit\protected\controllers\SiteController.php(90): CModel->validate()
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionLogin()
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#11 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('login')
+#13 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('site/login')
+#14 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#15 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#16 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=site/login
+HTTP_REFERER=http://localhost/GitHub/DriverUnit/index.php?r=site/login
+---
+2013/03/08 10:53:01 [error] [exception.CException] exception 'CException' with message 'Property "LoginForm.errorCode" is not defined.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CComponent.php:131
+Stack trace:
+#0 xdebug://debug-eval(1): CComponent->__get('errorCode')
+#1 E:\GitHub\DriverUnit\protected\models\LoginForm.php(49): LoginForm::authenticate()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\validators\CInlineValidator.php(43): LoginForm->authenticate('password', Array)
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\validators\CValidator.php(197): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CModel.php(158): CValidator->validate(Object(LoginForm), NULL)
+#5 E:\GitHub\DriverUnit\protected\controllers\SiteController.php(90): CModel->validate()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionLogin()
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('login')
+#11 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('site/login')
+#12 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#14 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=site/login
+HTTP_REFERER=http://localhost/GitHub/DriverUnit/index.php?r=site/login
+---
+2013/03/08 11:07:06 [error] [exception.CException] exception 'CException' with message 'Property "LoginForm.errorCode" is not defined.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CComponent.php:131
+Stack trace:
+#0 xdebug://debug-eval(1): CComponent->__get('errorCode')
+#1 E:\GitHub\DriverUnit\protected\models\LoginForm.php(49): LoginForm::authenticate()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\validators\CInlineValidator.php(43): LoginForm->authenticate('password', Array)
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\validators\CValidator.php(197): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CModel.php(158): CValidator->validate(Object(LoginForm), NULL)
+#5 E:\GitHub\DriverUnit\protected\controllers\SiteController.php(90): CModel->validate()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionLogin()
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('login')
+#11 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('site/login')
+#12 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#14 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=site/login
+HTTP_REFERER=http://localhost/GitHub/DriverUnit/index.php?r=site/login
+---
+2013/03/08 11:15:59 [error] [exception.CException] exception 'CException' with message 'Property "LoginForm.errorCode" is not defined.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CComponent.php:131
+Stack trace:
+#0 xdebug://debug-eval(1): CComponent->__get('errorCode')
+#1 E:\GitHub\DriverUnit\protected\models\LoginForm.php(49): LoginForm::authenticate()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\validators\CInlineValidator.php(43): LoginForm->authenticate('password', Array)
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\validators\CValidator.php(197): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CModel.php(158): CValidator->validate(Object(LoginForm), NULL)
+#5 E:\GitHub\DriverUnit\protected\controllers\SiteController.php(90): CModel->validate()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionLogin()
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('login')
+#11 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('site/login')
+#12 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#14 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=site/login
+HTTP_REFERER=http://localhost/GitHub/DriverUnit/index.php?r=site/login
+---
+2013/03/08 11:18:52 [error] [exception.CException] exception 'CException' with message 'Property "LoginForm.errorCode" is not defined.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CComponent.php:131
+Stack trace:
+#0 xdebug://debug-eval(1): CComponent->__get('errorCode')
+#1 E:\GitHub\DriverUnit\protected\models\LoginForm.php(49): LoginForm::authenticate()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\validators\CInlineValidator.php(43): LoginForm->authenticate('password', Array)
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\validators\CValidator.php(197): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CModel.php(158): CValidator->validate(Object(LoginForm), NULL)
+#5 E:\GitHub\DriverUnit\protected\controllers\SiteController.php(90): CModel->validate()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): SiteController->actionLogin()
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('login')
+#11 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('site/login')
+#12 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#14 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=site/login
+HTTP_REFERER=http://localhost/GitHub/DriverUnit/index.php?r=site/login
+---
+2013/03/08 11:19:37 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\auth\CAccessControlFilter.php:157
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\auth\CAccessControlFilter.php(120): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('admin')
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('driverLine/admi...')
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#11 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=driverLine/admin
+HTTP_REFERER=http://localhost/GitHub/DriverUnit/index.php?r=site/login
+---
+2013/03/08 11:25:28 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\auth\CAccessControlFilter.php:157
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\auth\CAccessControlFilter.php(120): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('admin')
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('driverLine/admi...')
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#11 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=driverLine/admin
+HTTP_REFERER=http://localhost/GitHub/DriverUnit/index.php?r=site/login
+---
+2013/03/08 11:25:50 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\auth\CAccessControlFilter.php:157
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\auth\CAccessControlFilter.php(120): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('admin')
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('driverLine/admi...')
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#11 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=driverLine/admin
+HTTP_REFERER=http://localhost/GitHub/DriverUnit/index.php?r=site/login
+---
+2013/03/08 11:27:12 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\auth\CAccessControlFilter.php:157
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\auth\CAccessControlFilter.php(120): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('admin')
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('driverLine/admi...')
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#11 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=driverLine/admin
+HTTP_REFERER=http://localhost/GitHub/DriverUnit/index.php?r=site/login
+---
+2013/03/08 11:45:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "admin".' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php:484
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(271): CController->missingAction('admin')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('admin')
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('site/admin')
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=site/admin
+---
+2013/03/08 12:06:38 [error] [php] include(CJavaScriptExpression.php): failed to open stream: No such file or directory (D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\YiiBase.php:418)
+Stack trace:
+#0 E:\GitHub\DriverUnit\themes\abound\views\site\pages\interface.php(210): spl_autoload_call()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CBaseController.php(127): require()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CBaseController.php(96): SiteController->renderInternal()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(870): SiteController->renderFile()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(783): SiteController->renderPartial()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CViewAction.php(141): SiteController->render()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CAction.php(75): CViewAction->run()
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CViewAction->runWithParams()
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): SiteController->runAction()
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): SiteController->runActionWithFilters()
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): SiteController->run()
+#11 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#12 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=site/page&view=interface
+in E:\GitHub\DriverUnit\themes\abound\views\site\pages\interface.php (210)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/08 14:25:28 [error] [exception.CException] exception 'CException' with message 'Property "CMenu.type" is not defined.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CComponent.php:174
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWidgetFactory.php(162): CComponent->__set('type', 'list')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CBaseController.php(147): CWidgetFactory->createWidget(Object(DriverLineController), 'zii.widgets.CMe...', Array)
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CBaseController.php(173): CBaseController->createWidget('zii.widgets.CMe...', Array)
+#3 E:\GitHub\DriverUnit\themes\abound\views\layouts\column2.php(15): CBaseController->widget('zii.widgets.CMe...', Array)
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CBaseController.php(127): require('E:\GitHub\Drive...')
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\GitHub\Drive...', Array, true)
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(785): CBaseController->renderFile('E:\GitHub\Drive...', Array, true)
+#7 E:\GitHub\DriverUnit\protected\controllers\DriverLineController.php(78): CController->render('create', Array)
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): DriverLineController->actionCreate()
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#11 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#12 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#13 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#14 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#15 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#16 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('create')
+#18 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('driverLine/crea...')
+#19 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#20 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#21 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=driverLine/create
+---
+2013/03/08 15:22:47 [error] [exception.CException] exception 'CException' with message 'Property "CStringValidator.0" is not defined.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CComponent.php:174
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\validators\CValidator.php(174): CComponent->__set('0', 'required')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CModel.php(285): CValidator::createValidator('length', Object(Line), 'name, startAddr...', Array)
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CModel.php(259): CModel->createValidators()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CModel.php(302): CModel->getValidators('name')
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\helpers\CHtml.php(1185): CModel->isAttributeRequired('name')
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\widgets\CActiveForm.php(560): CHtml::activeLabelEx(Object(Line), 'name', Array)
+#6 E:\GitHub\DriverUnit\protected\views\driverLine\_form.php(13): CActiveForm->labelEx(Object(Line), 'name')
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CBaseController.php(127): require('E:\GitHub\Drive...')
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\GitHub\Drive...', Array, true)
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(870): CBaseController->renderFile('E:\GitHub\Drive...', Array, true)
+#10 E:\GitHub\DriverUnit\protected\views\driverLine\create.php(15): CController->renderPartial('_form', Array)
+#11 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CBaseController.php(127): require('E:\GitHub\Drive...')
+#12 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CBaseController.php(96): CBaseController->renderInternal('E:\GitHub\Drive...', Array, true)
+#13 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(870): CBaseController->renderFile('E:\GitHub\Drive...', Array, true)
+#14 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(783): CController->renderPartial('create', Array, true)
+#15 E:\GitHub\DriverUnit\protected\controllers\DriverLineController.php(82): CController->render('create', Array)
+#16 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): DriverLineController->actionCreate()
+#17 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#18 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#19 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#20 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#21 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#22 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#23 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#24 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('create')
+#26 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('driverLine/crea...')
+#27 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#28 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#29 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=driverLine/create
+HTTP_REFERER=http://localhost/GitHub/DriverUnit/index.php?r=driverLine/index
+---
