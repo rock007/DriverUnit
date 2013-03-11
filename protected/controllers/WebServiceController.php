@@ -36,12 +36,7 @@ class WebServiceController extends Controller
 	 **/
 	public function actionRegisterUser(){
 
-<<<<<<< HEAD
-		$phoneNum= $this->getNoEmpty('phoneNum');
-		
-		echo CJSON::encode(new Response(true,'register action successfull',$phoneNum));
-=======
-			$account = new Account();
+		$account = new Account();
 
 			$account->phoneNum=$this->getNoEmpty('phoneNum');
 			
@@ -68,7 +63,7 @@ class WebServiceController extends Controller
                 echo CJSON::encode(new Response(false,'register action fail ',$account->phoneNum));	
             }
 		
->>>>>>> 8f0c25ec1d0c7c344fac2ccf5797d416c793fb32
+
 	}
 
 	/**
@@ -105,8 +100,6 @@ class WebServiceController extends Controller
 	 **/
 	public function actionDriverDetail(){
 
-<<<<<<< HEAD
-=======
 			$criteria =new CDbCriteria(); 
 			$id=$this->getNoEmpty('id');
 						
@@ -117,7 +110,6 @@ class WebServiceController extends Controller
 			$devices=Driver::model()->findAll($criteria);
 
 			echo CJSON::encode(new Records(sizeof($devices),$devices) );
->>>>>>> 8f0c25ec1d0c7c344fac2ccf5797d416c793fb32
 
 	}
 
@@ -133,11 +125,9 @@ class WebServiceController extends Controller
 		$endTime=$this->getNoEmpty('endTime');
 		$driverId=$this->getNoEmpty('driverId');
 
-<<<<<<< HEAD
-		echo CJSON::encode(new Response(true,'SubmitOrder action successfull',$driverId));
-=======
+
 		echo CJSON::encode(new Response(true,'SubmitOrder action successfull',""));
->>>>>>> 8f0c25ec1d0c7c344fac2ccf5797d416c793fb32
+
 	}
 
 	/**
@@ -174,17 +164,6 @@ class WebServiceController extends Controller
 
 	/**
 	 9.收藏
-<<<<<<< HEAD
-	 接口关键字：Collection
-	 输入参数：司机ID（Int）
-	 输出参数：成功/失败(Boolean)；失败原因Reason（String）
-	 **/
-	public function actionCollection(){
-
-		$driverId=$this->getNoEmpty('driverId');
-				
-		echo CJSON::encode(new Response(true,'Collection action successfull',$driverId));	
-=======
 	 接口关键字：AddCollection
 	 输入参数：司机ID（Int）
 	 输出参数：成功/失败(Boolean)；失败原因Reason（String）
@@ -204,7 +183,6 @@ class WebServiceController extends Controller
             } else {
                 echo CJSON::encode(new Response(false,'AddCollection action fail ',""));	
             }			
->>>>>>> 8f0c25ec1d0c7c344fac2ccf5797d416c793fb32
 	}
 
 	/**
@@ -215,8 +193,6 @@ class WebServiceController extends Controller
 	 **/
 	public function actionCollectionHistory(){
 
-<<<<<<< HEAD
-=======
 			$criteria =new CDbCriteria(); 
 			$phoneNum=$this->getNoEmpty('phoneNum');
 						
@@ -227,8 +203,6 @@ class WebServiceController extends Controller
 			$collections=Drivercollect::model()->findAll($criteria);
 
 			echo CJSON::encode(new Records(sizeof($collections),$collections) );
->>>>>>> 8f0c25ec1d0c7c344fac2ccf5797d416c793fb32
-
 	}
 
 	/**
@@ -239,9 +213,6 @@ class WebServiceController extends Controller
 	 **/
 	public function actionOrderHistory(){
 
-<<<<<<< HEAD
-
-=======
 			$criteria =new CDbCriteria(); 
 			$phoneNum=$this->getNoEmpty('phoneNum');
 						
@@ -252,21 +223,10 @@ class WebServiceController extends Controller
 			$orders=Order::model()->findAll($criteria);
 
 			echo CJSON::encode(new Records(sizeof($orders),$orders) );
->>>>>>> 8f0c25ec1d0c7c344fac2ccf5797d416c793fb32
 	}
 
 	/**
 	 12.点评投诉
-<<<<<<< HEAD
-	 接口关键字：Comments
-	 输入参数：OrderID（Int），点评星级（Int），点评内容（String）
-	 输出参数：成功/失败(Boolean)；失败原因Reason（String）
-	 **/
-	public function actionComments(){
-
-
-	}
-=======
 	 接口关键字：AddComments
 	 输入参数：OrderID（Int），点评星级（Int），点评内容（String）
 	 输出参数：成功/失败(Boolean)；失败原因Reason（String）
@@ -306,9 +266,7 @@ class WebServiceController extends Controller
 			$comments=Comment::model()->findAll($criteria);
 
 			echo CJSON::encode(new Records(sizeof(comments),comments) );
-	}
-	
->>>>>>> 8f0c25ec1d0c7c344fac2ccf5797d416c793fb32
+	}	
 	/**
 	 13.获取所有路线和目的地
 	 接口关键字：GetLine
@@ -317,13 +275,9 @@ class WebServiceController extends Controller
 	 **/
 	public function actionGetLine(){
 
-<<<<<<< HEAD
-
-=======
 		$lineArray=Line::model()->findAll();
 		
 		echo CJSON::encode(new Records(sizeof($lineArray),$lineArray) );
->>>>>>> 8f0c25ec1d0c7c344fac2ccf5797d416c793fb32
 	}
 
 	/**
@@ -333,10 +287,6 @@ class WebServiceController extends Controller
 	 输出参数：JSON结果（通知ID，通知内容String）；多条记录或无记录
 	 **/
 	public function actionNotification(){
-<<<<<<< HEAD
-
-
-=======
 		
 			$criteria =new CDbCriteria(); 
 			$phoneNum=$this->getNoEmpty('phoneNum');
@@ -349,7 +299,7 @@ class WebServiceController extends Controller
 			$msgList=Message::model()->findAll($criteria);
 
 			echo CJSON::encode(new Records(sizeof($msgList),$msgList) );
->>>>>>> 8f0c25ec1d0c7c344fac2ccf5797d416c793fb32
+
 	}
 }
  
