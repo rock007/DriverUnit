@@ -39,6 +39,11 @@
 		<?php echo $form->error($model,'des'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'spot'); ?>
+		<?php echo $form->textField($model,'spot',array('size'=>60,'maxlength'=>1024)); ?>
+		<?php echo $form->error($model,'spot'); ?>
+	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

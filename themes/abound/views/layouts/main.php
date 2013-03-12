@@ -29,6 +29,7 @@
 	  $cs->registerCssFile($baseUrl.'/css/abound.css');
 	  //$cs->registerCssFile($baseUrl.'/css/style-blue.css');
 	  ?>
+	  <link rel="stylesheet" type="text/css" href="css/hello.css">
       <!-- styles for style switcher -->
       	<link rel="stylesheet" type="text/css" href="<?php echo $baseUrl;?>/css/style-blue.css" />
         <link rel="alternate stylesheet" type="text/css" media="screen" title="style2" href="<?php echo $baseUrl;?>/css/style-brown.css" />

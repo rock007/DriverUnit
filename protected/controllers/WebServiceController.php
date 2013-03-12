@@ -4,7 +4,31 @@ class WebServiceController extends Controller
 
 	public function actionIndex()
 	{
-		echo CJSON::encode(array('val'=>'eeee '));
+		$this->render('index',array('nav'=>array( 
+												array('name'=>'CheckVersion','desc'=>'软件更新'),
+												array('name'=>'RegisterUser','desc'=>'注册'),
+												
+												array('name'=>'Login','desc'=>'登录'),
+												array('name'=>'Search','desc'=>'搜索'),
+												array('name'=>'DriverDetail','desc'=>'司机详情'),
+												array('name'=>'SubmitOrder','desc'=>'确认行程'),
+												array('name'=>'UpdateProfile','desc'=>'个人信息修改'),
+												
+												array('name'=>'ChangePwd','desc'=>'密码修改'),
+												array('name'=>'AddCollection','desc'=>'收藏'),
+												array('name'=>'CollectionHistory','desc'=>'收藏记录'),
+												array('name'=>'OrderHistory','desc'=>'行程记录'),
+												array('name'=>'AddComments','desc'=>'点评投诉'),
+												
+												array('name'=>'Comments','desc'=>'获取评价'),
+												array('name'=>'GetLine','desc'=>'获取所有路线'),
+												array('name'=>'Notification','desc'=>'用户通知信息'),
+												
+												array('name'=>'Feedback','desc'=>'用户反馈'),
+												
+											)
+									)
+						);
 	}
 
 	/**
@@ -88,7 +112,21 @@ class WebServiceController extends Controller
 	 **/
 	public function actionSearch(){
 		
+		$startDate=$this->getNoEmpty('startDate');
+		$endDate=$this->getNoEmpty('endDate');
+		$target=$this->getNoEmpty('target');
 		
+		$criteria =new CDbCriteria(); 
+		 
+		$criteria->addCondition(" startDate >='".$startDate."'");
+		$criteria->addCondition(" endDate >='".$endDate."'");						
+		$criteria->addSearchCondition('target', $target);
+						
+		$criteria->order=" id desc ";
+			
+		$Lines=Line::model()->findAll($criteria);
+
+		echo CJSON::encode(new Records(sizeof($Lines),$Lines) );
 
 	}
 
@@ -300,6 +338,27 @@ class WebServiceController extends Controller
 
 			echo CJSON::encode(new Records(sizeof($msgList),$msgList) );
 
+	}
+	
+	/*
+	 * 15.添加用户反馈
+	 * */
+	public function actionFeedback(){
+	
+			$comment = new Comment();
+            
+	 		$comment->mtype=100;
+	 		$comment->refId=0;
+	 		$comment->star=0;
+	 		$comment->remarks=$this->getNoEmpty('remarks');
+	 		$comment->createDt=Date('Y-m-d H:i:s');
+	 		
+            if($comment->save())
+            {
+                echo CJSON::encode(new Response(true,'AddComments action successfull',""));	
+            } else {
+                echo CJSON::encode(new Response(false,'AddComments action fail ',""));	
+            }
 	}
 }
  

@@ -2,7 +2,7 @@
         <div class="subnav navbar navbar-fixed-bottom">
             <div class="navbar-inner">
                 <div class="container">
-                    Designed by <a href="http://www.stp6.com" target="_new">stp6.com</a>. All Rights Reserved.<br /><small>Powered by <a href="http://www.yiiframework.com" title="Yii Framework" target="_new">Yii Framework</a> and <a href="http://twitter.github.com/bootstrap/" title="Twitter Bootstrap" target="_new">Twitter Bootstrap</a></small>
+                    Designed by <a href="http://www.westdriver.com" target="_new">westdriver.com</a>. All Rights Reserved.<br />
                 </div>
             </div>
         </div>      

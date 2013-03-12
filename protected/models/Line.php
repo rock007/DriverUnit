@@ -11,6 +11,7 @@
  * @property integer $interval
  * @property string $des
  * @property string $createDt
+ * @property string $spot
  */
 class Line extends CActiveRecord
 {
@@ -40,14 +41,16 @@ class Line extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array(' name, startAddress, endAddress', 'required'),
+		
+			array('name, startAddress, endAddress', 'required'),
 			array('interval', 'numerical', 'integerOnly'=>true),
 			array('name, startAddress, endAddress', 'length', 'max'=>20),
 			array('des', 'length', 'max'=>255),
+			array('spot', 'length', 'max'=>1024),
 			array('createDt', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, startAddress, endAddress, interval, des, createDt', 'safe', 'on'=>'search'),
+			array('id, name, startAddress, endAddress, interval, des, createDt, spot', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,12 +72,13 @@ class Line extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => '路线名',
-			'startAddress' => '开始地',
-			'endAddress' => '目的地',
-			'interval' => '全程(天)',
-			'des' => '描述',
-			'createDt' => '创建日期',
+			'name' => 'Name',
+			'startAddress' => 'Start Address',
+			'endAddress' => 'End Address',
+			'interval' => 'Interval',
+			'des' => 'Des',
+			'createDt' => 'Create Dt',
+			'spot' => 'Spot',
 		);
 	}
 
@@ -96,6 +100,7 @@ class Line extends CActiveRecord
 		$criteria->compare('interval',$this->interval);
 		$criteria->compare('des',$this->des,true);
 		$criteria->compare('createDt',$this->createDt,true);
+		$criteria->compare('spot',$this->spot,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

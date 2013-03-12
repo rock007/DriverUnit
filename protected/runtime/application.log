@@ -689,3 +689,47 @@ Stack trace:
 REQUEST_URI=/GitHub/DriverUnit/index.php?r=driverLine/create
 HTTP_REFERER=http://localhost/GitHub/DriverUnit/index.php?r=driverLine/index
 ---
+2013/03/12 10:29:37 [error] [php] Trying to get property of non-object (E:\GitHub\DriverUnit\protected\views\webService\index.php:10)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(870): WebServiceController->renderFile()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(783): WebServiceController->renderPartial()
+#2 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(12): WebServiceController->render()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebServiceController->actionIndex()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/
+in E:\GitHub\DriverUnit\protected\views\webService\index.php (10)
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (12)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/12 10:30:36 [error] [php] Undefined index: desc (E:\GitHub\DriverUnit\protected\views\webService\index.php:12)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(870): WebServiceController->renderFile()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(783): WebServiceController->renderPartial()
+#2 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(12): WebServiceController->render()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebServiceController->actionIndex()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebServiceController->runAction()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebServiceController->runActionWithFilters()
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebServiceController->run()
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/
+in E:\GitHub\DriverUnit\protected\views\webService\index.php (12)
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (12)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/12 11:06:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message '系统无法找到请求的 "admin" 动作.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php:484
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(271): CController->missingAction('admin')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('admin')
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('site/admin')
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#4 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=site/admin
+---
