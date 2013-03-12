@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+.form .row {
+    margin: 5px;
+}
+.form .row label {
+    float: left;
+    width: 80px;
+}
