@@ -1,5 +1,5 @@
 <?php
-class WebServiceController extends Controller
+class WebserviceController extends Controller
 {
 
 	public function actionIndex()
@@ -7,6 +7,7 @@ class WebServiceController extends Controller
 		$this->render('index',array('nav'=>array( 
 												array('name'=>'CheckVersion','desc'=>'软件更新'),
 												array('name'=>'RegisterUser','desc'=>'注册'),
+												array('name'=>'RegistForMobile','desc'=>'手机注册'),
 												
 												array('name'=>'Login','desc'=>'登录'),
 												array('name'=>'Search','desc'=>'搜索'),
@@ -86,8 +87,68 @@ class WebServiceController extends Controller
             } else {
                 echo CJSON::encode(new Response(false,'register action fail ',$account->phoneNum));	
             }
-		
+	}
+	
+	public function actionRegistForMobile(){
+	
+			$account = new Account();
 
+			$account->phoneNum=$this->getNoEmpty('phoneNum');
+			
+			//检查是否已经存在
+			$rec=Account::model()->findByPk( $account->phoneNum);
+			
+			if(count($rec)>0){
+				
+				echo CJSON::encode(new Response(false,'phoneNum is exist!',$account->phoneNum));	
+				
+				return;
+			}
+			
+			$account->pwd=$this->mkRandCode();
+			$account->createDt=Date('Y-m-d H:i:s');
+			$account->status=0;
+			$account->regKey="";
+			$account->lastLoginDt= Date('Y-m-d H:i:s');
+			
+            if($account->save())
+            {
+            	//短信通知
+            	$this->sendSms("18108692099,13262536752", "fuck le lele 刘乐 123 ");
+            	
+                echo CJSON::encode(new Response(true,'register action successfull',$account->phoneNum));	
+            } else {
+                echo CJSON::encode(new Response(false,'register action fail ',$account->phoneNum));	
+            }
+	}
+	
+	public function actionFindPwd(){
+	
+			$account = new Account();
+
+			$account->phoneNum=$this->getNoEmpty('phoneNum');
+			
+			//检查是否已经存在
+			$rec=Account::model()->findByPk( $account->phoneNum);
+			
+			if(count($rec)==0){
+				
+				echo CJSON::encode(new Response(false,'phoneNum is not exist!',$account->phoneNum));	
+				
+				return;
+			}
+			
+			$rec->pwd=$this->mkRandCode();
+						
+            if($rec->save())
+            {
+            	//短信通知
+            	$this->sendSms($rec->pwd, "尊敬的".$account->phoneNum." 你的新密码为：".$rec->pwd.",请不要泄露给其他人！");
+            	
+                echo CJSON::encode(new Response(true,'register action successfull',$account->phoneNum));	
+            } else {
+                echo CJSON::encode(new Response(false,'register action fail ',$account->phoneNum));	
+            }
 	}
 
 	/**
@@ -163,6 +224,8 @@ class WebServiceController extends Controller
 		$endTime=$this->getNoEmpty('endTime');
 		$driverId=$this->getNoEmpty('driverId');
 
+		//短信通知
+		
 
 		echo CJSON::encode(new Response(true,'SubmitOrder action successfull',""));
 

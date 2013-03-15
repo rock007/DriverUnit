@@ -733,3 +733,150 @@ Stack trace:
 #5 {main}
 REQUEST_URI=/GitHub/DriverUnit/index.php?r=site/admin
 ---
+2013/03/14 21:23:03 [error] [exception.CException] exception 'CException' with message '属性 "WebserviceController.errorCode" 未被定义.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CComponent.php:131
+Stack trace:
+#0 xdebug://debug-eval(1): CComponent->__get('errorCode')
+#1 E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php(96): WebserviceController::actionRegistForMobile()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebserviceController->actionRegistForMobile()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('RegistForMobile')
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('WebService/Regi...')
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#10 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/RegistForMobile
+---
+2013/03/14 21:23:12 [error] [exception.CException] exception 'CException' with message '属性 "WebserviceController.username" 未被定义.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CComponent.php:131
+Stack trace:
+#0 xdebug://debug-eval(1): CComponent->__get('username')
+#1 E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php(96): WebserviceController::actionRegistForMobile()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebserviceController->actionRegistForMobile()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('RegistForMobile')
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('WebService/Regi...')
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#10 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/RegistForMobile
+---
+2013/03/14 21:36:40 [error] [php] require_once(../extensions/BayouSmsSender.php): failed to open stream: No such file or directory (E:\GitHub\DriverUnit\protected\components\Controller.php:2)
+Stack trace:
+#0 unknown(0): autoload()
+#1 E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php(3): spl_autoload_call()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(344): require()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(270): CWebApplication->createController()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/RegistForMobile
+in E:\GitHub\DriverUnit\protected\components\Controller.php (2)
+in E:\GitHub\DriverUnit\protected\components\Controller.php (2)
+in E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php (3)
+2013/03/14 21:37:22 [error] [php] require_once(../extensions/BayouSmsSender.php): failed to open stream: No such file or directory (E:\GitHub\DriverUnit\protected\components\Controller.php:2)
+Stack trace:
+#0 unknown(0): autoload()
+#1 E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php(3): spl_autoload_call()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(344): require()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(270): CWebApplication->createController()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/RegistForMobile
+in E:\GitHub\DriverUnit\protected\components\Controller.php (2)
+in E:\GitHub\DriverUnit\protected\components\Controller.php (2)
+in E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php (3)
+2013/03/14 21:37:32 [error] [php] require_once(extensions/BayouSmsSender.php): failed to open stream: No such file or directory (E:\GitHub\DriverUnit\protected\components\Controller.php:2)
+Stack trace:
+#0 unknown(0): autoload()
+#1 E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php(3): spl_autoload_call()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(344): require()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(270): CWebApplication->createController()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/RegistForMobile
+in E:\GitHub\DriverUnit\protected\components\Controller.php (2)
+in E:\GitHub\DriverUnit\protected\components\Controller.php (2)
+in E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php (3)
+2013/03/14 21:37:55 [error] [php] require_once(../protected/extensions/BayouSmsSender.php): failed to open stream: No such file or directory (E:\GitHub\DriverUnit\protected\components\Controller.php:2)
+Stack trace:
+#0 unknown(0): autoload()
+#1 E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php(3): spl_autoload_call()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(344): require()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(270): CWebApplication->createController()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/RegistForMobile
+in E:\GitHub\DriverUnit\protected\components\Controller.php (2)
+in E:\GitHub\DriverUnit\protected\components\Controller.php (2)
+in E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php (3)
+2013/03/14 21:40:52 [error] [php] require_once(E:\GitHub\DriverUnit\protected\componentsprotected/extensions/BayouSmsSender.php): failed to open stream: No such file or directory (E:\GitHub\DriverUnit\protected\components\Controller.php:2)
+Stack trace:
+#0 unknown(0): autoload()
+#1 E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php(3): spl_autoload_call()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(344): require()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(270): CWebApplication->createController()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/RegistForMobile
+in E:\GitHub\DriverUnit\protected\components\Controller.php (2)
+in E:\GitHub\DriverUnit\protected\components\Controller.php (2)
+in E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php (3)
+2013/03/14 21:41:27 [error] [php] require_once(E:\GitHub\DriverUnit\protected\components/extensions/BayouSmsSender.php): failed to open stream: No such file or directory (E:\GitHub\DriverUnit\protected\components\Controller.php:2)
+Stack trace:
+#0 unknown(0): autoload()
+#1 E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php(3): spl_autoload_call()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(344): require()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(270): CWebApplication->createController()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/RegistForMobile
+in E:\GitHub\DriverUnit\protected\components\Controller.php (2)
+in E:\GitHub\DriverUnit\protected\components\Controller.php (2)
+in E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php (3)
+2013/03/14 21:41:58 [error] [php] require_once(E:\GitHub\DriverUnit\protected\components../extensions/BayouSmsSender.php): failed to open stream: No such file or directory (E:\GitHub\DriverUnit\protected\components\Controller.php:2)
+Stack trace:
+#0 unknown(0): autoload()
+#1 E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php(3): spl_autoload_call()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(344): require()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(270): CWebApplication->createController()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/RegistForMobile
+in E:\GitHub\DriverUnit\protected\components\Controller.php (2)
+in E:\GitHub\DriverUnit\protected\components\Controller.php (2)
+in E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php (3)
+2013/03/14 21:42:00 [error] [php] require_once(E:\GitHub\DriverUnit\protected\components../extensions/BayouSmsSender.php): failed to open stream: No such file or directory (E:\GitHub\DriverUnit\protected\components\Controller.php:2)
+Stack trace:
+#0 unknown(0): autoload()
+#1 E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php(3): spl_autoload_call()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(344): require()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(270): CWebApplication->createController()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/RegistForMobile
+in E:\GitHub\DriverUnit\protected\components\Controller.php (2)
+in E:\GitHub\DriverUnit\protected\components\Controller.php (2)
+in E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php (3)
+2013/03/14 21:46:17 [error] [php] Undefined variable: im (E:\GitHub\DriverUnit\protected\components\Controller.php:59)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebserviceController->runAction()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebserviceController->runActionWithFilters()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebserviceController->run()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/RegistForMobile&phoneNum=1222
+in E:\GitHub\DriverUnit\protected\components\Controller.php (59)
+in E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php (108)
+in E:\GitHub\DriverUnit\index.php (17)

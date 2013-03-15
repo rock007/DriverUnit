@@ -1,4 +1,6 @@
 <?php
+require_once 'BayouSmsSender.php';
+
 /**
  * Controller is the customized base controller class.
  * All controller classes for this application should extend from this base class.
@@ -21,6 +23,7 @@ class Controller extends CController
 	 */
 	public $breadcrumbs=array();
 	
+
 	
 	function getNoEmpty($key){
 		
@@ -46,5 +49,33 @@ class Controller extends CController
 	function setCurPg($pg){
 		global $pgname;
 		$pgname=$pg;
+	}
+	
+	function mkRandCode(){
+		//生成4位数字
+		$vcodes="";
+		for($i=0;$i<4;$i++){			
+			$authnum=rand(1,9);
+			
+			$vcodes=((string)$vcodes).((string)$authnum);	
+		}
+		return $vcodes;
+	}
+
+	function sendSms($mobile,$msg){
+		$sms_user="603308";
+		$sms_pwd="13818474956" ;//65460433
+	
+		$sender=new BayouSmsSender();
+		//"13162550089,13162550089"
+		//$msg="这是个测试短信，短信内容要从非GB2312Z转化到GB2312,我们假设在UTF8环境下运行";
+
+		//$change=iconv("UTF-8","GB2312",$msg);
+		
+		$result=$sender->sendsms($sms_user,md5($sms_pwd),$mobile,$msg);
+ 		//echo $result['status'];
+  		//echo $result['msg'];
+  
+  		return $result;
 	}
 }
