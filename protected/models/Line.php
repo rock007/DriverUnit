@@ -12,6 +12,8 @@
  * @property string $des
  * @property string $createDt
  * @property string $spot
+ * @property string $startDate
+ * @property string $endDate
  */
 class Line extends CActiveRecord
 {
@@ -41,16 +43,15 @@ class Line extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-		
-			array('name, startAddress, endAddress', 'required'),
 			array('interval', 'numerical', 'integerOnly'=>true),
 			array('name, startAddress, endAddress', 'length', 'max'=>20),
 			array('des', 'length', 'max'=>255),
 			array('spot', 'length', 'max'=>1024),
+			array('startDate, endDate', 'length', 'max'=>8),
 			array('createDt', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, startAddress, endAddress, interval, des, createDt, spot', 'safe', 'on'=>'search'),
+			array('id, name, startAddress, endAddress, interval, des, createDt, spot, startDate, endDate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -79,6 +80,8 @@ class Line extends CActiveRecord
 			'des' => 'Des',
 			'createDt' => 'Create Dt',
 			'spot' => 'Spot',
+			'startDate' => 'Start Date',
+			'endDate' => 'End Date',
 		);
 	}
 
@@ -101,6 +104,8 @@ class Line extends CActiveRecord
 		$criteria->compare('des',$this->des,true);
 		$criteria->compare('createDt',$this->createDt,true);
 		$criteria->compare('spot',$this->spot,true);
+		$criteria->compare('startDate',$this->startDate,true);
+		$criteria->compare('endDate',$this->endDate,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

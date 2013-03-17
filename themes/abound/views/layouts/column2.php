@@ -61,9 +61,9 @@
                 <div class="accordion-inner">
 		    
 		    <ul class="nav nav-list">
-              <li class="<?php echo navItemSelected('index.php?r=driver/index'); ?>"><a href="index.php?r=driver/index">司机列表</a></li>
-              <li class="<?php echo navItemSelected('index.php?r=driver/create'); ?>"><a href="index.php?r=driver/create">添加司机</a></li>
-              <li class="<?php echo navItemSelected('index.php?r=driver/admin'); ?>"><a href="index.php?r=driver/admin">管理司机</a></li>
+              <li class="<?php echo navItemSelected('index.php?r=driver/index'); ?>"><a href="index.php?r=DriverModel/index">司机列表</a></li>
+              <li class="<?php echo navItemSelected('index.php?r=driver/create'); ?>"><a href="index.php?r=DriverModel/create">添加司机</a></li>
+              <li class="<?php echo navItemSelected('index.php?r=driver/admin'); ?>"><a href="index.php?r=DriverModel/admin">管理司机</a></li>
             </ul>
 
                 </div>

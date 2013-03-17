@@ -15,6 +15,8 @@
  * @property string $createDt
  * @property string $remarks
  * @property integer $status
+ * @property string $telephone
+ * @property string $mobile
  */
 class Driver extends CActiveRecord
 {
@@ -45,12 +47,12 @@ class Driver extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('carYear, start, status', 'numerical', 'integerOnly'=>true),
-			array('name, carType, address', 'length', 'max'=>20),
+			array('name, carType, address, telephone, mobile', 'length', 'max'=>20),
 			array('line, ads, remarks', 'length', 'max'=>255),
 			array('createDt', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, carType, line, carYear, address, start, ads, createDt, remarks, status', 'safe', 'on'=>'search'),
+			array('id, name, carType, line, carYear, address, start, ads, createDt, remarks, status, telephone, mobile', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -82,6 +84,8 @@ class Driver extends CActiveRecord
 			'createDt' => 'Create Dt',
 			'remarks' => 'Remarks',
 			'status' => 'Status',
+			'telephone' => 'Telephone',
+			'mobile' => 'Mobile',
 		);
 	}
 
@@ -107,6 +111,8 @@ class Driver extends CActiveRecord
 		$criteria->compare('createDt',$this->createDt,true);
 		$criteria->compare('remarks',$this->remarks,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('telephone',$this->telephone,true);
+		$criteria->compare('mobile',$this->mobile,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

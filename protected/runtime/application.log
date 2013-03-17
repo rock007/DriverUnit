@@ -880,3 +880,128 @@ REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/RegistForMobile&phoneNum=1
 in E:\GitHub\DriverUnit\protected\components\Controller.php (59)
 in E:\GitHub\DriverUnit\protected\controllers\WebserviceController.php (108)
 in E:\GitHub\DriverUnit\index.php (17)
+2013/03/16 18:53:29 [error] [php] Use of undefined constant accounts - assumed 'accounts' (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:172)
+Stack trace:
+#0 D:\php\wwwroot\yii\framework\web\CController.php(287): WebserviceController->runAction()
+#1 D:\php\wwwroot\yii\framework\web\CController.php(266): WebserviceController->runActionWithFilters()
+#2 D:\php\wwwroot\yii\framework\web\CWebApplication.php(276): WebserviceController->run()
+#3 D:\php\wwwroot\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\php\wwwroot\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/Login&phoneNum=22&pwd=225777
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (172)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/16 19:59:42 [error] [php] Undefined variable: target (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:227)
+Stack trace:
+#0 D:\php\wwwroot\yii\framework\web\CController.php(287): WebserviceController->runAction()
+#1 D:\php\wwwroot\yii\framework\web\CController.php(266): WebserviceController->runActionWithFilters()
+#2 D:\php\wwwroot\yii\framework\web\CWebApplication.php(276): WebserviceController->run()
+#3 D:\php\wwwroot\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\php\wwwroot\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/SearchForLine&startDate=11&endDate=333&line=xx
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (227)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/16 20:00:02 [error] [php] Undefined variable: target (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:227)
+Stack trace:
+#0 D:\php\wwwroot\yii\framework\web\CController.php(287): WebserviceController->runAction()
+#1 D:\php\wwwroot\yii\framework\web\CController.php(266): WebserviceController->runActionWithFilters()
+#2 D:\php\wwwroot\yii\framework\web\CWebApplication.php(276): WebserviceController->run()
+#3 D:\php\wwwroot\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\php\wwwroot\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/SearchForLine&startDate=11&endDate=333&line=xx
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (227)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/16 20:00:04 [error] [php] Undefined variable: target (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:227)
+Stack trace:
+#0 D:\php\wwwroot\yii\framework\web\CController.php(287): WebserviceController->runAction()
+#1 D:\php\wwwroot\yii\framework\web\CController.php(266): WebserviceController->runActionWithFilters()
+#2 D:\php\wwwroot\yii\framework\web\CWebApplication.php(276): WebserviceController->run()
+#3 D:\php\wwwroot\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\php\wwwroot\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/SearchForLine&startDate=11&endDate=333&line=xx
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (227)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/17 11:17:59 [error] [php] Undefined index: startAddres (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:274)
+Stack trace:
+#0 D:\php\wwwroot\yii\framework\web\CController.php(287): WebserviceController->runAction()
+#1 D:\php\wwwroot\yii\framework\web\CController.php(266): WebserviceController->runActionWithFilters()
+#2 D:\php\wwwroot\yii\framework\web\CWebApplication.php(276): WebserviceController->run()
+#3 D:\php\wwwroot\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\php\wwwroot\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/SearchForAddress&startDate=20130315&endDate=20130318&address=%E4%B8%8A%E6%B5%B7
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (274)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/17 11:18:31 [error] [php] Undefined index: carYear (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:284)
+Stack trace:
+#0 D:\php\wwwroot\yii\framework\web\CController.php(287): WebserviceController->runAction()
+#1 D:\php\wwwroot\yii\framework\web\CController.php(266): WebserviceController->runActionWithFilters()
+#2 D:\php\wwwroot\yii\framework\web\CWebApplication.php(276): WebserviceController->run()
+#3 D:\php\wwwroot\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\php\wwwroot\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/SearchForAddress&startDate=20130315&endDate=20130318&address=%E4%B8%8A%E6%B5%B7
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (284)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/17 11:19:18 [error] [php] Undefined index: star (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:286)
+Stack trace:
+#0 D:\php\wwwroot\yii\framework\web\CController.php(287): WebserviceController->runAction()
+#1 D:\php\wwwroot\yii\framework\web\CController.php(266): WebserviceController->runActionWithFilters()
+#2 D:\php\wwwroot\yii\framework\web\CWebApplication.php(276): WebserviceController->run()
+#3 D:\php\wwwroot\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\php\wwwroot\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/SearchForAddress&startDate=20130315&endDate=20130318&address=%E4%B8%8A%E6%B5%B7
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (286)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/17 11:19:36 [error] [php] Undefined index: driverStarStar (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:286)
+Stack trace:
+#0 D:\php\wwwroot\yii\framework\web\CController.php(287): WebserviceController->runAction()
+#1 D:\php\wwwroot\yii\framework\web\CController.php(266): WebserviceController->runActionWithFilters()
+#2 D:\php\wwwroot\yii\framework\web\CWebApplication.php(276): WebserviceController->run()
+#3 D:\php\wwwroot\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\php\wwwroot\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/SearchForAddress&startDate=20130315&endDate=20130318&address=%E4%B8%8A%E6%B5%B7
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (286)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/17 11:21:46 [error] [php] Undefined index: driverName (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:250)
+Stack trace:
+#0 D:\php\wwwroot\yii\framework\web\CController.php(287): WebserviceController->runAction()
+#1 D:\php\wwwroot\yii\framework\web\CController.php(266): WebserviceController->runActionWithFilters()
+#2 D:\php\wwwroot\yii\framework\web\CWebApplication.php(276): WebserviceController->run()
+#3 D:\php\wwwroot\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\php\wwwroot\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=webservice/SearchForLine&startDate=20130315&endDate=20130318&line=1
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (250)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/03/17 21:15:23 [error] [exception.CException] exception 'CException' with message '属性 "Order.startTime" 未被定义.' in D:\php\wwwroot\yii\framework\base\CComponent.php:174
+Stack trace:
+#0 D:\php\wwwroot\yii\framework\db\ar\CActiveRecord.php(160): CComponent->__set('startTime', 'yyy')
+#1 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(380): CActiveRecord->__set('startTime', 'yyy')
+#2 D:\php\wwwroot\yii\framework\web\actions\CInlineAction.php(50): WebserviceController->actionSubmitOrder()
+#3 D:\php\wwwroot\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#4 D:\php\wwwroot\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#5 D:\php\wwwroot\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 D:\php\wwwroot\yii\framework\web\CWebApplication.php(276): CController->run('SubmitOrder')
+#7 D:\php\wwwroot\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('WebService/Subm...')
+#8 D:\php\wwwroot\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#9 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#10 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/SubmitOrder&startTime=yyy&endTime=990&driverId=1&phoneNum=999
+---
+2013/03/17 21:16:38 [error] [php] Object of class Order could not be converted to string (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:386)
+Stack trace:
+#0 D:\php\wwwroot\yii\framework\web\CController.php(287): WebserviceController->runAction()
+#1 D:\php\wwwroot\yii\framework\web\CController.php(266): WebserviceController->runActionWithFilters()
+#2 D:\php\wwwroot\yii\framework\web\CWebApplication.php(276): WebserviceController->run()
+#3 D:\php\wwwroot\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\php\wwwroot\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/SubmitOrder&startDate=yyy&endDate=990&driverId=1&phoneNum=999
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (386)
+in E:\GitHub\DriverUnit\index.php (17)

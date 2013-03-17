@@ -11,6 +11,9 @@ class WebserviceController extends Controller
 												
 												array('name'=>'Login','desc'=>'登录'),
 												array('name'=>'Search','desc'=>'搜索'),
+												array('name'=>'SearchForLine','desc'=>'按路线搜索'),
+												array('name'=>'SearchForAddress','desc'=>'按地点搜索'),
+												
 												array('name'=>'DriverDetail','desc'=>'司机详情'),
 												array('name'=>'SubmitOrder','desc'=>'确认行程'),
 												array('name'=>'UpdateProfile','desc'=>'个人信息修改'),
@@ -26,6 +29,7 @@ class WebserviceController extends Controller
 												array('name'=>'Notification','desc'=>'用户通知信息'),
 												
 												array('name'=>'Feedback','desc'=>'用户反馈'),
+												array('name'=>'Address','desc'=>'获取地点'),												
 												
 											)
 									)
@@ -114,7 +118,7 @@ class WebserviceController extends Controller
             if($account->save())
             {
             	//短信通知
-            	$this->sendSms("18108692099,13262536752", "fuck le lele 刘乐 123 ");
+            	$this->sendSms($account->phoneNum, "您好，你注册账号的密码为： ".$account->pwd);
             	
                 echo CJSON::encode(new Response(true,'register action successfull',$account->phoneNum));	
             } else {
@@ -145,9 +149,9 @@ class WebserviceController extends Controller
             	//短信通知
             	$this->sendSms($rec->pwd, "尊敬的".$account->phoneNum." 你的新密码为：".$rec->pwd.",请不要泄露给其他人！");
             	
-                echo CJSON::encode(new Response(true,'register action successfull',$account->phoneNum));	
+                echo CJSON::encode(new Response(true,'FindPwd action successfull',$account->phoneNum));	
             } else {
-                echo CJSON::encode(new Response(false,'register action fail ',$account->phoneNum));	
+                echo CJSON::encode(new Response(false,'FindPwd action fail ',$account->phoneNum));	
             }
 	}
 
@@ -162,8 +166,20 @@ class WebserviceController extends Controller
 		$phoneNum= $this->getNoEmpty('phoneNum');
 		$pwd= $this->getNoEmpty('pwd');
 		
-		echo CJSON::encode(new Response(true,'login action successfull',$phoneNum));
+		$criteria =new CDbCriteria(); 
 		
+		$criteria->addCondition("phoneNum='". $phoneNum."'");
+		$criteria->addCondition("pwd='". $pwd."'");
+		
+		$accounts=Account::model()->findAll($criteria);
+		
+		if(count($accounts)>0){
+			
+			echo CJSON::encode(new Response(true,'login action successfull',$phoneNum));
+			
+		}else{
+			echo CJSON::encode(new Response(false,'login action fail ,account not exist',$phoneNum));
+		}
 	}
 	/**
 	 4.搜索
@@ -190,7 +206,139 @@ class WebserviceController extends Controller
 		echo CJSON::encode(new Records(sizeof($Lines),$Lines) );
 
 	}
+	
+	/**
+	 4.搜索
+	 接口关键字：Search
+	 输入参数：起始时间StartTime（Date），结束时间EndTime（Date），目的地Target（String），路线Line（String）（目的地和路线必填一个）
+	 输出参数：JSON结果（司机ID，司机称呼，车型，星级评价，路线，驾龄，所在地）；多条记录或无记录
+	 **/
+	public function actionSearchForLine(){
+		
+		$startDate=$this->getNoEmpty('startDate');
+		$endDate=$this->getNoEmpty('endDate');
+		$line=$this->getNoEmpty('line');
 
+			$criteria =new CDbCriteria(); 
+			//$id=$this->getNoEmpty('id');						
+			//$criteria->compare("id", $id);
+						
+			$criteria->order=" id desc ";
+			
+			$devices=DriverModel::model()->findAll($criteria);
+
+			echo CJSON::encode(new Records(sizeof($devices),$devices) );
+		
+		/***
+		$db = Yii::app()->db; 
+		
+		$sql=" SELECT  a.id,  a.name, a.startAddress,a.endAddress,a.interval,a.spot,a.startDate,a.endDate
+					,b.name as	driverName,b.carType,b.carYear,b.address as driverAddress,b.start as driverStar,b.ads ,b.telephone,b.mobile 
+				 from line a inner join  driver b ON 
+					a.id=b.line 
+				 WHERE a.startDate >=:startDate and a.endDate< :endDate  and a.id=:line  ";
+		
+		$results = $db->createCommand($sql)->query(array(  
+ 				 ':startDate' => $startDate,':endDate'=>$endDate,':line'=>$line,  
+		));
+
+		$jsonData=Array();
+		
+		foreach($results as $result){  
+			
+			$m=Array(
+			'line'=>$result['id'],
+			'name'=>$result['name'],
+			'startAddres'=>$result['startAddress'],
+			'endAddress'=>$result['endAddress'],
+			'interval'=>$result['interval'],
+			'spot'=>$result['spot'],			
+			'startDate'=>$result['startDate'],
+			'endDate'=>$result['endDate'],
+			
+			//司机
+			'driverName'=>$result['driverName'],
+			'carType'=>$result['carType'],
+			'carYear'=>$result['carYear'],
+			'driverAddress'=>$result['driverAddress'],
+			'driverStar'=>$result['driverStar'],
+			'ads'=>$result['ads'],
+			
+			'telephone'=>$result['telephone'],
+			'mobile'=>$result['mobile'],
+			);
+			
+			array_push($jsonData,$m); 
+		} 
+
+		echo CJSON::encode($jsonData);
+		 Yii::app()->end();	
+		 ***/	
+	}
+	
+	/**
+	 4.搜索
+	 接口关键字：Search
+	 输入参数：起始时间StartTime（Date），结束时间EndTime（Date），目的地Target（String），路线Line（String）（目的地和路线必填一个）
+	 输出参数：JSON结果（司机ID，司机称呼，车型，星级评价，路线，驾龄，所在地）；多条记录或无记录
+	 **/
+	public function actionSearchForAddress(){
+		
+		$startDate=$this->getNoEmpty('startDate');
+		$endDate=$this->getNoEmpty('endDate');
+		$address=$this->getNoEmpty('address');
+		
+		$db = Yii::app()->db; 
+		
+		$sql=" SELECT  a.id,  a.name, a.startAddress,a.endAddress,a.interval,a.spot,a.startDate,a.endDate
+					,b.name as	driverName,b.carType,b.carYear,b.address as driverAddress,b.start as driverStar,b.ads,b.telephone,b.mobile
+				 from line a inner join  driver b ON 
+					a.id=b.line 
+				 WHERE a.startDate >=:startDate and a.endDate< :endDate  and b.address=:address  ";
+		
+		$results = $db->createCommand($sql)->query(array(  
+ 				 ':startDate' => $startDate,':endDate'=>$endDate,':address'=>$address,  
+		));
+		  
+		$jsonData=Array();
+		
+		foreach($results as $result){  
+			
+			$m=Array(
+			'line'=>$result['id'],
+			'name'=>$result['name'],
+			'startAddres'=>$result['startAddress'],
+			'endAddress'=>$result['endAddress'],
+			'interval'=>$result['interval'],
+			'spot'=>$result['spot'],			
+			'startDate'=>$result['startDate'],
+			'endDate'=>$result['endDate'],
+			
+			//司机
+			'driverName'=>$result['driverName'],
+			'carType'=>$result['carType'],
+			'carYear'=>$result['carYear'],
+			'driverAddress'=>$result['driverAddress'],
+			'driverStar'=>$result['driverStar'],
+			'ads'=>$result['ads'],
+			'telephone'=>$result['telephone'],
+			'mobile'=>$result['mobile'],
+			);
+			
+			array_push($jsonData,$m); 
+		} 
+
+		echo CJSON::encode($jsonData);
+		
+	}
+
+	/**
+	 * 所有地点
+	 * */
+	public function actionAddress(){
+	
+		echo CJSON::encode(Array(Array('name'=>'上海'),Array('name'=>'北京'),Array('name'=>'杭州'),Array('name'=>'深圳')) );
+	}
 	/**
 	 5.司机详情
 	 接口关键字：DriverDetail
@@ -220,14 +368,27 @@ class WebserviceController extends Controller
 	 **/
 	public function actionSubmitOrder(){
 
-		$startTime=$this->getNoEmpty('startTime');//yyyyMMdd
-		$endTime=$this->getNoEmpty('endTime');
-		$driverId=$this->getNoEmpty('driverId');
+		//$startTime=$this->getNoEmpty('startTime');//yyyyMMdd
+		//$endTime=$this->getNoEmpty('endTime');
+		//$driverId=$this->getNoEmpty('driverId');
 
-		//短信通知
-		
-
-		echo CJSON::encode(new Response(true,'SubmitOrder action successfull',""));
+			//短信通知
+			$order = new Order();
+            
+			$order->phoneNum=$this->getNoEmpty('phoneNum');
+			$order->driverId=$this->getNoEmpty('driverId');
+			$order->startDate=$this->getNoEmpty('startDate');
+			$order->endDate=$this->getNoEmpty('endDate');
+			
+			$order->status=0;
+			$order->remarks=$this->getKey('remarks');
+			
+            if($order->save())
+            {
+                echo CJSON::encode(new Response(true,'Order action successfull',""));	
+            } else {
+                echo CJSON::encode(new Response(false,'Order action fail ',""));	
+            }		
 
 	}
 
