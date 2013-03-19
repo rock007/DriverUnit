@@ -31,7 +31,7 @@ class Controller extends CController
 		{
 			return $$key;
 		}else{
-			echo CJSON::encode(new Response(false,'参数不能为空',$key));
+			echo CJSON::encode(new Response(false,$key.'参数不能为空'));
 			die();
 		}
 	}
@@ -52,9 +52,9 @@ class Controller extends CController
 	}
 	
 	function mkRandCode(){
-		//生成4位数字
+		//生成6位数字
 		$vcodes="";
-		for($i=0;$i<4;$i++){			
+		for($i=0;$i<6;$i++){			
 			$authnum=rand(1,9);
 			
 			$vcodes=((string)$vcodes).((string)$authnum);	
@@ -62,20 +62,45 @@ class Controller extends CController
 		return $vcodes;
 	}
 
-	function sendSms($mobile,$msg){
+	function sendSms($mobile,$msg,$refId,$mtype){
 		$sms_user="603308";
 		$sms_pwd="13818474956" ;//65460433
-	
-		$sender=new BayouSmsSender();
+			
 		//"13162550089,13162550089"
 		//$msg="这是个测试短信，短信内容要从非GB2312Z转化到GB2312,我们假设在UTF8环境下运行";
-
 		//$change=iconv("UTF-8","GB2312",$msg);
 		
+		$sender=new BayouSmsSender();
 		$result=$sender->sendsms($sms_user,md5($sms_pwd),$mobile,$msg);
+		
  		//echo $result['status'];
   		//echo $result['msg'];
   
-  		return $result;
+		$SmsEntity=new Sms();
+		
+		$SmsEntity->refId=$refId;
+		$SmsEntity->sendTo=$mobile;
+		$SmsEntity->msg=$msg;
+		$SmsEntity->createDate=Date('Y-m-d H:i:s');
+		$SmsEntity->mtype=$mtype;
+		$SmsEntity->result=$result['msg']."	".$result['status'];
+		$SmsEntity->save();
+  		
+	}
+	
+	/**
+	 * 添加用户操作日志
+	 * */
+	function addUserLog($phoneNum,$act,$msg,$params){
+
+		$log = new UserLog();
+
+		$log->phoneNum=$phoneNum;
+		$log->act=$act;
+		$log->msg=$msg;
+		$log->params=$params;
+		$log->createDate=Date('Y-m-d H:i:s');
+			
+		$log->save();
 	}
 }

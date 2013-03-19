@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class BayouSmsSender
 {
@@ -38,21 +38,21 @@ class BayouSmsSender
 	{
 		$content = urlEncode(urlEncode(mb_convert_encoding($msg, 'gb2312' ,'utf-8')));
 		$apidata="func=sendsms&username=$username&password=$password&mobiles=$mobiles&message=$content&smstype=0&timerflag=0&timervalue=&timertype=0&timerid=0";
-		echo $apidata;
+		//echo $apidata;
 		$apiurl = "http://sms.c8686.com/Api/BayouSmsApiEx.aspx";
-		echo $apiurl;
+		//echo $apiurl;
 		$ret= $this->request($apiurl,$apidata);
 		$ret["body"]=mb_convert_encoding($ret["body"], 'utf-8' ,'gb2312');
 		if($ret && strpos($ret["body"],"<errorcode>0</errorcode>")>0)
 		{
 		
-		  echo $ret["body"];
+		  //echo $ret["body"];
 		  $result=array('status'=>'1','msg'=>'成功','body'=>$ret["body"]);
 		  return $result;
 		}
 		else
 		{
-		 echo $ret["body"];
+		 //echo $ret["body"];
 		 $result=array('status'=>'0','msg'=>'失败','body'=>$ret["body"]);
 		 return $result;
 		}

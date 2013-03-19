@@ -10,6 +10,13 @@
  * @property integer $sex
  * @property string $address
  * @property string $createDt
+ * @property integer $vip
+ * @property string $weixin
+ * @property string $weixin_pwd
+ * @property string $qq
+ * @property string $weibo
+ * @property string $weibo_pwd
+ * @property string $email
  */
 class Profile extends CActiveRecord
 {
@@ -39,12 +46,13 @@ class Profile extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, sex', 'numerical', 'integerOnly'=>true),
+			array('id, sex, vip', 'numerical', 'integerOnly'=>true),
 			array('name, userName, address', 'length', 'max'=>20),
+			array('weixin, weixin_pwd, qq, weibo, weibo_pwd, email', 'length', 'max'=>255),
 			array('createDt', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, userName, sex, address, createDt', 'safe', 'on'=>'search'),
+			array('id, name, userName, sex, address, createDt, vip, weixin, weixin_pwd, qq, weibo, weibo_pwd, email', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,6 +79,13 @@ class Profile extends CActiveRecord
 			'sex' => 'Sex',
 			'address' => 'Address',
 			'createDt' => 'Create Dt',
+			'vip' => 'Vip',
+			'weixin' => 'Weixin',
+			'weixin_pwd' => 'Weixin Pwd',
+			'qq' => 'Qq',
+			'weibo' => 'Weibo',
+			'weibo_pwd' => 'Weibo Pwd',
+			'email' => 'Email',
 		);
 	}
 
@@ -91,6 +106,13 @@ class Profile extends CActiveRecord
 		$criteria->compare('sex',$this->sex);
 		$criteria->compare('address',$this->address,true);
 		$criteria->compare('createDt',$this->createDt,true);
+		$criteria->compare('vip',$this->vip);
+		$criteria->compare('weixin',$this->weixin,true);
+		$criteria->compare('weixin_pwd',$this->weixin_pwd,true);
+		$criteria->compare('qq',$this->qq,true);
+		$criteria->compare('weibo',$this->weibo,true);
+		$criteria->compare('weibo_pwd',$this->weibo_pwd,true);
+		$criteria->compare('email',$this->email,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

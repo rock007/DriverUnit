@@ -61,9 +61,28 @@
                 <div class="accordion-inner">
 		    
 		    <ul class="nav nav-list">
-              <li class="<?php echo navItemSelected('index.php?r=driver/index'); ?>"><a href="index.php?r=DriverModel/index">司机列表</a></li>
-              <li class="<?php echo navItemSelected('index.php?r=driver/create'); ?>"><a href="index.php?r=DriverModel/create">添加司机</a></li>
-              <li class="<?php echo navItemSelected('index.php?r=driver/admin'); ?>"><a href="index.php?r=DriverModel/admin">管理司机</a></li>
+              <li class="<?php echo navItemSelected('driverV2/index'); ?>"><a href="index.php?r=driverV2/index">司机列表</a></li>
+              <li class="<?php echo navItemSelected('driverV2/create'); ?>"><a href="index.php?r=driverV2/create">添加司机</a></li>
+              <li class="<?php echo navItemSelected('driverV2/admin'); ?>"><a href="index.php?r=driverV2/admin">管理司机</a></li>
+            </ul>
+
+                </div>
+              </div>
+            </div>
+			
+				<div class="accordion-group">
+              <div class="accordion-heading">
+                <a href="#collapseThree" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">
+                  		地点
+                </a>
+              </div>
+              <div style="height: auto;" class="accordion-body in" id="collapseThree">
+                <div class="accordion-inner">
+		    
+		    <ul class="nav nav-list">
+              <li class="<?php echo navItemSelected('address/index'); ?>"><a href="index.php?r=address/index">地点列表</a></li>
+              <li class="<?php echo navItemSelected('address/create'); ?>"><a href="index.php?r=address/create">添加地点</a></li>
+              <li class="<?php echo navItemSelected('address/admin'); ?>"><a href="index.php?r=address/admin">管理地点</a></li>
             </ul>
 
                 </div>

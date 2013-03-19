@@ -74,7 +74,7 @@ class WebserviceController extends Controller
 			
 			if(count($rec)>0){
 				
-				echo CJSON::encode(new Response(false,'phoneNum is exist!',$account->phoneNum));	
+				echo CJSON::encode(new Response(false,'该号码已经注册!'));	
 				
 				return;
 			}
@@ -87,9 +87,9 @@ class WebserviceController extends Controller
 			
             if($account->save())
             {
-                echo CJSON::encode(new Response(true,'register action successfull',$account->phoneNum));	
+                echo CJSON::encode(new Response(true,'注册成功！'));	
             } else {
-                echo CJSON::encode(new Response(false,'register action fail ',$account->phoneNum));	
+                echo CJSON::encode(new Response(false,'注册失败！ '));	
             }
 	}
 	
@@ -104,10 +104,12 @@ class WebserviceController extends Controller
 			
 			if(count($rec)>0){
 				
-				echo CJSON::encode(new Response(false,'phoneNum is exist!',$account->phoneNum));	
+				echo CJSON::encode(new Response(false,'该号码已经注册!'));	
 				
 				return;
 			}
+			
+			$this->addUserLog($account->phoneNum, "actionRegistForMobile", "用户注册", "");
 			
 			$account->pwd=$this->mkRandCode();
 			$account->createDt=Date('Y-m-d H:i:s');
@@ -118,11 +120,11 @@ class WebserviceController extends Controller
             if($account->save())
             {
             	//短信通知
-            	$this->sendSms($account->phoneNum, "您好，你注册账号的密码为： ".$account->pwd);
+            	$this->sendSms($account->phoneNum, "尊敬的".$account->phoneNum."，恭喜你注册成功，账号的密码为： ".$account->pwd,$account->phoneNum,1);
             	
-                echo CJSON::encode(new Response(true,'register action successfull',$account->phoneNum));	
+                echo CJSON::encode(new Response(true,'注册操作成功！'));	
             } else {
-                echo CJSON::encode(new Response(false,'register action fail ',$account->phoneNum));	
+                echo CJSON::encode(new Response(false,'注册失败！ '));	
             }
 	}
 	
@@ -132,12 +134,13 @@ class WebserviceController extends Controller
 
 			$account->phoneNum=$this->getNoEmpty('phoneNum');
 			
+			$this->addUserLog($account->phoneNum, "actionFindPwd", "用户找回密码", "");
 			//检查是否已经存在
 			$rec=Account::model()->findByPk( $account->phoneNum);
 			
 			if(count($rec)==0){
 				
-				echo CJSON::encode(new Response(false,'phoneNum is not exist!',$account->phoneNum));	
+				echo CJSON::encode(new Response(false,'该号码未注册!'));	
 				
 				return;
 			}
@@ -147,11 +150,11 @@ class WebserviceController extends Controller
             if($rec->save())
             {
             	//短信通知
-            	$this->sendSms($rec->pwd, "尊敬的".$account->phoneNum." 你的新密码为：".$rec->pwd.",请不要泄露给其他人！");
+            	$this->sendSms($rec->pwd, "尊敬的".$account->phoneNum." 你的新密码为：".$rec->pwd.",请不要泄露给其他人！",$account->phoneNum,2);
             	
-                echo CJSON::encode(new Response(true,'FindPwd action successfull',$account->phoneNum));	
+                echo CJSON::encode(new Response(true,'操作成功，请注意短信密码接收！'));	
             } else {
-                echo CJSON::encode(new Response(false,'FindPwd action fail ',$account->phoneNum));	
+                echo CJSON::encode(new Response(false,'操作失败！ '));	
             }
 	}
 
@@ -166,6 +169,8 @@ class WebserviceController extends Controller
 		$phoneNum= $this->getNoEmpty('phoneNum');
 		$pwd= $this->getNoEmpty('pwd');
 		
+		$this->addUserLog($phoneNum, "actionLogin", "用户登录", $pwd);
+		
 		$criteria =new CDbCriteria(); 
 		
 		$criteria->addCondition("phoneNum='". $phoneNum."'");
@@ -173,12 +178,12 @@ class WebserviceController extends Controller
 		
 		$accounts=Account::model()->findAll($criteria);
 		
-		if(count($accounts)>0){
+		if(count($accounts)>0){				
 			
-			echo CJSON::encode(new Response(true,'login action successfull',$phoneNum));
+			echo CJSON::encode(new Response(true,'登录成功！'));
 			
 		}else{
-			echo CJSON::encode(new Response(false,'login action fail ,account not exist',$phoneNum));
+			echo CJSON::encode(new Response(false,'登录失败，用户名密码不正确！'));
 		}
 	}
 	/**
@@ -188,6 +193,9 @@ class WebserviceController extends Controller
 	 输出参数：JSON结果（司机ID，司机称呼，车型，星级评价，路线，驾龄，所在地）；多条记录或无记录
 	 **/
 	public function actionSearch(){
+		
+		echo "接口已经废弃！";
+		return;
 		
 		$startDate=$this->getNoEmpty('startDate');
 		$endDate=$this->getNoEmpty('endDate');
@@ -215,28 +223,20 @@ class WebserviceController extends Controller
 	 **/
 	public function actionSearchForLine(){
 		
+		$phoneNum=$this->getNoEmpty('phoneNum');
 		$startDate=$this->getNoEmpty('startDate');
 		$endDate=$this->getNoEmpty('endDate');
 		$line=$this->getNoEmpty('line');
-
-			$criteria =new CDbCriteria(); 
-			//$id=$this->getNoEmpty('id');						
-			//$criteria->compare("id", $id);
-						
-			$criteria->order=" id desc ";
-			
-			$devices=DriverModel::model()->findAll($criteria);
-
-			echo CJSON::encode(new Records(sizeof($devices),$devices) );
 		
-		/***
 		$db = Yii::app()->db; 
 		
-		$sql=" SELECT  a.id,  a.name, a.startAddress,a.endAddress,a.interval,a.spot,a.startDate,a.endDate
-					,b.name as	driverName,b.carType,b.carYear,b.address as driverAddress,b.start as driverStar,b.ads ,b.telephone,b.mobile 
-				 from line a inner join  driver b ON 
-					a.id=b.line 
-				 WHERE a.startDate >=:startDate and a.endDate< :endDate  and a.id=:line  ";
+		$sql=" select a.Id,driverName,secName,nation,tel1,tel2,tel3,sex,carType,carID,driverYear,carSeat,carYear,carKm,province,
+				address,address1,address2,address3,carPic,a.driverID,carPass,carNum,carLevel,suppUser
+				from driverV2 a inner join driver_line b on a.id=b.driverId
+				where  b.line=:line 
+					and a.id not in(
+    					select driverid from submit_order where beginDate > :startDate  and endDate < :endDate
+				) ";		
 		
 		$results = $db->createCommand($sql)->query(array(  
  				 ':startDate' => $startDate,':endDate'=>$endDate,':line'=>$line,  
@@ -247,33 +247,44 @@ class WebserviceController extends Controller
 		foreach($results as $result){  
 			
 			$m=Array(
-			'line'=>$result['id'],
-			'name'=>$result['name'],
-			'startAddres'=>$result['startAddress'],
-			'endAddress'=>$result['endAddress'],
-			'interval'=>$result['interval'],
-			'spot'=>$result['spot'],			
-			'startDate'=>$result['startDate'],
-			'endDate'=>$result['endDate'],
+			'id'=>$result['Id'],
+			//'driverName'=>$result['driverName'],
+			'secName'=>$result['secName'],
+			//'nation'=>$result['nation'],		
+			//'tel1'=>$result['tel1'],			
+			//'tel2'=>$result['tel2'],
+			//'tel3'=>$result['tel3'],
 			
-			//司机
-			'driverName'=>$result['driverName'],
+			'sex'=>$result['sex'],
 			'carType'=>$result['carType'],
-			'carYear'=>$result['carYear'],
-			'driverAddress'=>$result['driverAddress'],
-			'driverStar'=>$result['driverStar'],
-			'ads'=>$result['ads'],
+			//'carID'=>$result['carID'],
+			'driverYear'=>$result['driverYear'],
+			'carSeat'=>$result['carSeat'],
+			//'carYear'=>$result['carYear'],
+			//'carKm'=>$result['carKm'],
+			'province'=>$result['province'],
 			
-			'telephone'=>$result['telephone'],
-			'mobile'=>$result['mobile'],
+			//'address'=>$result['address'],
+			//'address1'=>$result['address1'],
+			//'address2'=>$result['address2'],
+			//'address3'=>$result['address3'],
+			//'carPic'=>$result['carPic'],
+			
+			//'driverID'=>$result['driverID'],
+			//'carPass'=>$result['carPass'],
+			//'carNum'=>$result['carNum'],
+			'carLevel'=>$result['carLevel'],
+			//'suppUser'=>$result['suppUser'],
 			);
 			
 			array_push($jsonData,$m); 
 		} 
 
-		echo CJSON::encode($jsonData);
-		 Yii::app()->end();	
-		 ***/	
+		$this->addUserLog($phoneNum, "actionSearchForLine", "司机查询", $line);	
+			
+		echo CJSON::encode(new OutJson(true,'查询成功！',new Records(count($jsonData),$jsonData) ));
+		Yii::app()->end();	
+		
 	}
 	
 	/**
@@ -284,17 +295,20 @@ class WebserviceController extends Controller
 	 **/
 	public function actionSearchForAddress(){
 		
+		$phoneNum=$this->getNoEmpty('phoneNum');
+		
 		$startDate=$this->getNoEmpty('startDate');
 		$endDate=$this->getNoEmpty('endDate');
 		$address=$this->getNoEmpty('address');
 		
 		$db = Yii::app()->db; 
 		
-		$sql=" SELECT  a.id,  a.name, a.startAddress,a.endAddress,a.interval,a.spot,a.startDate,a.endDate
-					,b.name as	driverName,b.carType,b.carYear,b.address as driverAddress,b.start as driverStar,b.ads,b.telephone,b.mobile
-				 from line a inner join  driver b ON 
-					a.id=b.line 
-				 WHERE a.startDate >=:startDate and a.endDate< :endDate  and b.address=:address  ";
+		$sql=" select Id,driverName,secName,nation,tel1,tel2,tel3,sex,carType,carID,driverYear,carSeat,carYear,carKm,province,
+				address,address1,address2,address3,carPic,driverID,carPass,carNum,carLevel,suppUser
+					from driverV2  where (address1 = :address or address2 = :address or address3 = :address )
+						and id not in(
+    						select driverid from submit_order where beginDate > :startDate and endDate < :endDate
+				)";
 		
 		$results = $db->createCommand($sql)->query(array(  
  				 ':startDate' => $startDate,':endDate'=>$endDate,':address'=>$address,  
@@ -305,30 +319,44 @@ class WebserviceController extends Controller
 		foreach($results as $result){  
 			
 			$m=Array(
-			'line'=>$result['id'],
-			'name'=>$result['name'],
-			'startAddres'=>$result['startAddress'],
-			'endAddress'=>$result['endAddress'],
-			'interval'=>$result['interval'],
-			'spot'=>$result['spot'],			
-			'startDate'=>$result['startDate'],
-			'endDate'=>$result['endDate'],
+			'id'=>$result['Id'],
+			//'driverName'=>$result['driverName'],
+			'secName'=>$result['secName'],
+			//'nation'=>$result['nation'],		
+			//'tel1'=>$result['tel1'],			
+			//'tel2'=>$result['tel2'],
+			//'tel3'=>$result['tel3'],
 			
-			//司机
-			'driverName'=>$result['driverName'],
+			'sex'=>$result['sex'],
 			'carType'=>$result['carType'],
-			'carYear'=>$result['carYear'],
-			'driverAddress'=>$result['driverAddress'],
-			'driverStar'=>$result['driverStar'],
-			'ads'=>$result['ads'],
-			'telephone'=>$result['telephone'],
-			'mobile'=>$result['mobile'],
+			//'carID'=>$result['carID'],
+			'driverYear'=>$result['driverYear'],
+			'carSeat'=>$result['carSeat'],
+			//'carYear'=>$result['carYear'],
+			//'carKm'=>$result['carKm'],
+			'province'=>$result['province'],
+			
+			//'address'=>$result['address'],
+			//'address1'=>$result['address1'],
+			//'address2'=>$result['address2'],
+			//'address3'=>$result['address3'],
+			//'carPic'=>$result['carPic'],
+			
+			//'driverID'=>$result['driverID'],
+			//'carPass'=>$result['carPass'],
+			//'carNum'=>$result['carNum'],
+			'carLevel'=>$result['carLevel'],
+			//'suppUser'=>$result['suppUser'],
+			
 			);
 			
 			array_push($jsonData,$m); 
 		} 
 
-		echo CJSON::encode($jsonData);
+		$this->addUserLog($phoneNum, "actionSearchForAddress", "司机查询", $address);		
+		//echo CJSON::encode($jsonData);
+		
+		echo CJSON::encode(new OutJson(true,'查询成功！',new Records(count($jsonData),$jsonData) ));
 		
 	}
 
@@ -337,7 +365,15 @@ class WebserviceController extends Controller
 	 * */
 	public function actionAddress(){
 	
-		echo CJSON::encode(Array(Array('name'=>'上海'),Array('name'=>'北京'),Array('name'=>'杭州'),Array('name'=>'深圳')) );
+		//echo CJSON::encode(Array(Array('name'=>'上海'),Array('name'=>'北京'),Array('name'=>'杭州'),Array('name'=>'深圳')) );
+		
+		$criteria =new CDbCriteria(); 		 
+		$criteria->order=" level desc ";
+			
+		$addresss=Address::model()->findAll($criteria);
+		
+		echo CJSON::encode(new OutJson(true,'查询成功！',new Records(sizeof($addresss),$addresss) ) );
+		
 	}
 	/**
 	 5.司机详情
@@ -346,18 +382,59 @@ class WebserviceController extends Controller
 	 输出参数：JSON结果（失败原因，司机称呼，电话，车型，路线，驾龄，所在地，星级评价，评价详情（多条或无记录），宣传图片地址（多条或无记录））
 	 **/
 	public function actionDriverDetail(){
-
-			$criteria =new CDbCriteria(); 
-			$id=$this->getNoEmpty('id');
-						
-			$criteria->compare("id", $id);
-						
-			$criteria->order=" id desc ";
 			
-			$devices=Driver::model()->findAll($criteria);
+			$id=$this->getNoEmpty('id');
+			$phoneNum=$this->getNoEmpty("phoneNum");
+									
+			$device=DriverV2::model()->findByPk($id);
 
-			echo CJSON::encode(new Records(sizeof($devices),$devices) );
-
+			if($device!=null){			
+				//记录操作
+				$this->addUserLog($phoneNum, "actionDriverDetail", "司机详细查看", $id);				
+			}			
+			//限制查看次数
+			$userLog= UserLog::model()->findAllBySql(" SELECT * FROM `user_log` where phoneNum=:phoneNum and date(createDate)=CURDATE() ",array(':phoneNum'=>$phoneNum));
+						
+			if(sizeof($userLog)  > 5){
+			
+				echo CJSON::encode(new Response(false,"抱歉，你今天查询司机的次数已经超额！")  );
+				return;	
+			}
+			
+			//echo CJSON::encode($device);
+			
+			$m=Array(
+				'id'=>$device->Id ,
+				'driverName'=>$device->driverName,
+				'secName'=>$device->secName,
+				'nation'=>$device->nation,		
+				'tel1'=>$device->tel1,			
+				'tel2'=>$device->tel2,
+				'tel3'=>$device->tel3,
+			
+				'sex'=>$device->sex,
+				'carType'=>$device->carType,
+				'carID'=>$device->carID,
+				'driverYear'=>$device->driverYear,
+				'carSeat'=>$device->carSeat,
+				'carYear'=>$device->carYear,
+				'carKm'=>$device->carKm,
+				'province'=>$device->province,
+			
+				'address'=>$device->address,
+				'address1'=>$device->address1,
+				'address2'=>$device->address2,
+				'address3'=>$device->address3,
+				//'carPic'=>$result['carPic'],
+			
+				//'driverID'=>$result['driverID'],
+				//'carPass'=>$result['carPass'],
+				'carNum'=>$device->carNum,
+				'carLevel'=>$device->carLevel,
+				//'suppUser'=>$result['suppUser'],
+			);
+			
+			echo CJSON::encode(new OutJson(true,"操作成功",$m)  );			
 	}
 
 	/**
@@ -368,13 +445,12 @@ class WebserviceController extends Controller
 	 **/
 	public function actionSubmitOrder(){
 
-		//$startTime=$this->getNoEmpty('startTime');//yyyyMMdd
-		//$endTime=$this->getNoEmpty('endTime');
-		//$driverId=$this->getNoEmpty('driverId');
-
 			//短信通知
-			$order = new Order();
+			$order = new SubmitOrder();
             
+			$order->uid=Date('YmdHis');
+			$order->submit_Date=Date('Y-m-d H:i:s');
+			
 			$order->phoneNum=$this->getNoEmpty('phoneNum');
 			$order->driverId=$this->getNoEmpty('driverId');
 			$order->startDate=$this->getNoEmpty('startDate');
@@ -385,9 +461,9 @@ class WebserviceController extends Controller
 			
             if($order->save())
             {
-                echo CJSON::encode(new Response(true,'Order action successfull',""));	
+                echo CJSON::encode(new Response(true,'订单提交成功！'));	
             } else {
-                echo CJSON::encode(new Response(false,'Order action fail ',""));	
+                echo CJSON::encode(new Response(false,'订单提交失败！ '));	
             }		
 
 	}
@@ -399,13 +475,39 @@ class WebserviceController extends Controller
 	 输出参数：成功/失败(Boolean)；失败原因Reason（String）
 	 **/
 	public function actionUpdateProfile(){
-
-		$name=$this->getNoEmpty('name');
-		$userName=$this->getNoEmpty('userName');
-		$sex=$this->getNoEmpty('sex');
-		$city=$this->getNoEmpty('city');
 		
-		echo CJSON::encode(new Response(true,'UpdateProfile action successfull',$name));		
+		$phoneNum=$this->getNoEmpty("phoneNum");
+		
+		$rec=Profile::model()->findByPk($phoneNum);
+
+		if($rec==null){
+			
+			$rec=new Profile();
+		}
+		
+		$rec->id=$this->getNoEmpty("phoneNum");
+		$rec->name=$this->getNoEmpty("name");
+		$rec->userName=$this->getNoEmpty("userName");
+		$rec->sex=$this->getKey("sex");
+		$rec->address=$this->getKey("address");
+		$rec->createDt= Date('Y-m-d H:i:s');
+		$rec->vip=$this->getNoEmpty("vip");
+		$rec->weixin=$this->getKey("weixin");
+		$rec->weixin_pwd=$this->getKey("weixin_pwd");
+		$rec->qq=$this->getKey("qq");
+		$rec->weibo=$this->getKey("weibo");
+		$rec->weibo_pwd=$this->getKey("weibo_pwd");
+		$rec->email=$this->getKey("email");		
+
+		if($rec->save())
+		{
+			$this->addUserLog($phoneNum, "actionUpdateProfile", "个人信息修改", "");		
+			
+			echo CJSON::encode(new Response(true,'个人信息修改成功！'));
+		} else {
+			echo CJSON::encode(new Response(false,'个人信息修改失败！ '));
+		}
+				
 	}
 
 	/**
@@ -415,13 +517,36 @@ class WebserviceController extends Controller
 	 输出参数：成功/失败(Boolean)；失败原因Reason（String）
 	 **/
 	public function actionChangePwd(){
-		
+
 		$phoneNum=$this->getNoEmpty('phoneNum');
 		$oldPwd=$this->getNoEmpty('oldPwd');
 		$newPwd=$this->getNoEmpty('newPwd');
-				
-		echo CJSON::encode(new Response(true,'ChangePwd action successfull',$phoneNum));	
 
+		$rec=Account::model()->findByPk($phoneNum);
+
+		if($rec==null){
+			
+			echo CJSON::encode(new Response(false,'号码不存在，请注册!'));
+			return ;
+		}
+		
+		if($rec->pwd!=$oldPwd){
+
+			//原来密码不正确
+			echo CJSON::encode(new Response(false,'旧密码不正确！'));
+			return ;
+		}
+
+		$rec->pwd=$newPwd;
+
+		if($rec->save())
+		{
+			$this->addUserLog($phoneNum, "actionChangePwd", "密码修改", "");
+			
+			echo CJSON::encode(new Response(true,'密码修改成功！'));
+		} else {
+			echo CJSON::encode(new Response(false,'密码修改失败！'));
+		}
 	}
 
 	/**
@@ -441,9 +566,9 @@ class WebserviceController extends Controller
 			
             if($Drivercollect->save())
             {
-                echo CJSON::encode(new Response(true,'AddCollection action successfull',""));	
+                echo CJSON::encode(new Response(true,'收藏司机成功！'));	
             } else {
-                echo CJSON::encode(new Response(false,'AddCollection action fail ',""));	
+                echo CJSON::encode(new Response(false,'收藏司机失败！'));	
             }			
 	}
 
@@ -464,7 +589,7 @@ class WebserviceController extends Controller
 			
 			$collections=Drivercollect::model()->findAll($criteria);
 
-			echo CJSON::encode(new Records(sizeof($collections),$collections) );
+			echo CJSON::encode(new OutJson(true, "执行成功", new Records(sizeof($collections),$collections)) );
 	}
 
 	/**
@@ -482,9 +607,9 @@ class WebserviceController extends Controller
 						
 			$criteria->order=" id desc ";
 			
-			$orders=Order::model()->findAll($criteria);
+			$orders=SubmitOrder::model()->findAll($criteria);
 
-			echo CJSON::encode(new Records(sizeof($orders),$orders) );
+			echo CJSON::encode(new OutJson(true, "执行成功", new Records(sizeof($orders),$orders))  );
 	}
 
 	/**
@@ -503,11 +628,13 @@ class WebserviceController extends Controller
 	 		$comment->remarks=$this->getKey('remarks');
 	 		$comment->createDt=Date('Y-m-d H:i:s');
 	 		
+	 		$comment->who=$this->getKey('who');//谁评价
+	 		
             if($comment->save())
             {
-                echo CJSON::encode(new Response(true,'AddComments action successfull',""));	
+                echo CJSON::encode(new Response(true,'添加评价成功！'));	
             } else {
-                echo CJSON::encode(new Response(false,'AddComments action fail ',""));	
+                echo CJSON::encode(new Response(false,'添加评价失败！ '));	
             }
 	}
 	
@@ -527,7 +654,7 @@ class WebserviceController extends Controller
 			
 			$comments=Comment::model()->findAll($criteria);
 
-			echo CJSON::encode(new Records(sizeof(comments),comments) );
+			echo CJSON::encode(new OutJson(true, "操作成功", new Records(sizeof(comments),comments))  );
 	}	
 	/**
 	 13.获取所有路线和目的地
@@ -539,7 +666,7 @@ class WebserviceController extends Controller
 
 		$lineArray=Line::model()->findAll();
 		
-		echo CJSON::encode(new Records(sizeof($lineArray),$lineArray) );
+		echo CJSON::encode(new OutJson(true, "操作成功", new Records(sizeof($lineArray),$lineArray))  );
 	}
 
 	/**
@@ -560,8 +687,7 @@ class WebserviceController extends Controller
 			
 			$msgList=Message::model()->findAll($criteria);
 
-			echo CJSON::encode(new Records(sizeof($msgList),$msgList) );
-
+			echo CJSON::encode(new OutJson(true, "操作成功", new Records(sizeof($msgList),$msgList)) );
 	}
 	
 	/*
@@ -569,6 +695,7 @@ class WebserviceController extends Controller
 	 * */
 	public function actionFeedback(){
 	
+			$phoneNum=$this->getNoEmpty('phoneNum');
 			$comment = new Comment();
             
 	 		$comment->mtype=100;
@@ -577,11 +704,13 @@ class WebserviceController extends Controller
 	 		$comment->remarks=$this->getNoEmpty('remarks');
 	 		$comment->createDt=Date('Y-m-d H:i:s');
 	 		
+	 		$comment->who=$phoneNum;
+	 		
             if($comment->save())
             {
-                echo CJSON::encode(new Response(true,'AddComments action successfull',""));	
+                echo CJSON::encode(new Response(true,'用户反馈成功'));	
             } else {
-                echo CJSON::encode(new Response(false,'AddComments action fail ',""));	
+                echo CJSON::encode(new Response(false,'用户反馈失败 '));	
             }
 	}
 }

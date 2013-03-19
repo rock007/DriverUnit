@@ -10,6 +10,7 @@
  * @property integer $star
  * @property string $remarks
  * @property string $createDt
+ * @property string $who
  */
 class Comment extends CActiveRecord
 {
@@ -41,11 +42,11 @@ class Comment extends CActiveRecord
 		return array(
 			array('mtype, star', 'numerical', 'integerOnly'=>true),
 			array('refId', 'length', 'max'=>20),
-			array('remarks', 'length', 'max'=>255),
+			array('remarks, who', 'length', 'max'=>255),
 			array('createDt', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, mtype, refId, star, remarks, createDt', 'safe', 'on'=>'search'),
+			array('id, mtype, refId, star, remarks, createDt, who', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -72,6 +73,7 @@ class Comment extends CActiveRecord
 			'star' => 'Star',
 			'remarks' => 'Remarks',
 			'createDt' => 'Create Dt',
+			'who' => 'Who',
 		);
 	}
 
@@ -92,6 +94,7 @@ class Comment extends CActiveRecord
 		$criteria->compare('star',$this->star);
 		$criteria->compare('remarks',$this->remarks,true);
 		$criteria->compare('createDt',$this->createDt,true);
+		$criteria->compare('who',$this->who,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

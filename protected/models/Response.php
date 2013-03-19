@@ -1,14 +1,16 @@
 <?php
 class Response 
-{
-	public $result;	
-	public $body;
-	public $extra;
+{	
+	public $result;// true ,false	
 	
-	function Response($key1,$key2,$key3){
+	public $msg;   //消息提示 
+	
+	public $body;  //内容,数据，单条，多条
+	
+	function Response($key1,$key2){
 		$this->result=$key1;
-		$this->body=$key2;
-		$this->extra=$key3;		
+		$this->msg=$key2;
+		
 	}
 	
 }
