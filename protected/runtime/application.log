@@ -1252,3 +1252,14 @@ Stack trace:
 REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/DriverDetail&id=1&phoneNum=1345678987
 in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (396)
 in E:\GitHub\DriverUnit\index.php (17)
+2013/03/20 16:28:50 [error] [php] Use of undefined constant comments - assumed 'comments' (E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php:657)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): WebserviceController->runAction()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): WebserviceController->runActionWithFilters()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): WebserviceController->run()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/Comments&refId=1&mtype=100
+in E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php (657)
+in E:\GitHub\DriverUnit\index.php (17)

@@ -173,8 +173,8 @@ class WebserviceController extends Controller
 		
 		$criteria =new CDbCriteria(); 
 		
-		$criteria->addCondition("phoneNum='". $phoneNum."'");
-		$criteria->addCondition("pwd='". $pwd."'");
+		$criteria->addCondition("  phoneNum='". $phoneNum."'");
+		$criteria->addCondition("  pwd='". $pwd."'");
 		
 		$accounts=Account::model()->findAll($criteria);
 		
@@ -582,8 +582,8 @@ class WebserviceController extends Controller
 
 			$criteria =new CDbCriteria(); 
 			$phoneNum=$this->getNoEmpty('phoneNum');
-						
-			$criteria->addCondition(" 'phoneNum'  ='".$phoneNum."' ");
+			
+			$criteria->addCondition(" phoneNum  ='".$phoneNum."' ");
 						
 			$criteria->order=" id desc ";
 			
@@ -603,7 +603,7 @@ class WebserviceController extends Controller
 			$criteria =new CDbCriteria(); 
 			$phoneNum=$this->getNoEmpty('phoneNum');
 						
-			$criteria->addCondition(" 'phoneNum'  ='".$phoneNum."' ");
+			$criteria->addCondition(" phoneNum  ='".$phoneNum."' ");
 						
 			$criteria->order=" id desc ";
 			
@@ -647,14 +647,14 @@ class WebserviceController extends Controller
 			$refId=$this->getNoEmpty('refId');
 			$mtype=$this->getNoEmpty('mtype');
 			
-			$criteria->addCondition(" 'refId'  ='".$refId."' ");
+			$criteria->addCondition(" refId  ='".$refId."' ");
 			$criteria->addCondition(" mtype =".$mtype);
 			
 			$criteria->order=" id asc ";
 			
 			$comments=Comment::model()->findAll($criteria);
 
-			echo CJSON::encode(new OutJson(true, "操作成功", new Records(sizeof(comments),comments))  );
+			echo CJSON::encode(new OutJson(true, "操作成功", new Records(sizeof($comments),$comments))  );
 	}	
 	/**
 	 13.获取所有路线和目的地
