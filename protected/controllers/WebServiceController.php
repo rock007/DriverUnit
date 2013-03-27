@@ -13,10 +13,12 @@ class WebserviceController extends Controller
 												array('name'=>'Search','desc'=>'搜索'),
 												array('name'=>'SearchForLine','desc'=>'按路线搜索'),
 												array('name'=>'SearchForAddress','desc'=>'按地点搜索'),
+												array('name'=>'SearchForCollection','desc'=>'按收藏搜索'),
 												
 												array('name'=>'DriverDetail','desc'=>'司机详情'),
 												array('name'=>'SubmitOrder','desc'=>'确认行程'),
 												array('name'=>'UpdateProfile','desc'=>'个人信息修改'),
+												array('name'=>'Profile','desc'=>'获取个人信息'),
 												
 												array('name'=>'ChangePwd','desc'=>'密码修改'),
 												
@@ -367,6 +369,65 @@ class WebserviceController extends Controller
 		
 	}
 
+	//收藏司机查询
+	public function actionSearchForCollection(){
+		
+		$phoneNum=$this->getNoEmpty('phoneNum');
+		
+		$db = Yii::app()->db; 
+		
+		$sql=" select a.Id,driverName,secName,nation,tel1,tel2,tel3,sex,carType,carID,driverYear,carSeat,carYear,carKm,province,
+				address,address1,address2,address3,carPic,a.driverID,carPass,carNum,carLevel,suppUser
+				from driverV2 a inner join drivercollect b on a.id=b.driverId
+				where  b.phoneNum=:phoneNum ";		
+		
+		$results = $db->createCommand($sql)->query(array(':phoneNum' => $phoneNum,));
+
+		$jsonData=Array();
+		
+		foreach($results as $result){  
+			
+			$m=Array(
+			'id'=>$result['Id'],
+			//'driverName'=>$result['driverName'],
+			'secName'=>$result['secName'],
+			//'nation'=>$result['nation'],		
+			//'tel1'=>$result['tel1'],			
+			//'tel2'=>$result['tel2'],
+			//'tel3'=>$result['tel3'],
+			
+			'sex'=>$result['sex'],
+			'carType'=>$result['carType'],
+			//'carID'=>$result['carID'],
+			'driverYear'=>$result['driverYear'],
+			'carSeat'=>$result['carSeat'],
+			//'carYear'=>$result['carYear'],
+			//'carKm'=>$result['carKm'],
+			'province'=>$result['province'],
+			
+			//'address'=>$result['address'],
+			//'address1'=>$result['address1'],
+			//'address2'=>$result['address2'],
+			//'address3'=>$result['address3'],
+			//'carPic'=>$result['carPic'],
+			
+			//'driverID'=>$result['driverID'],
+			//'carPass'=>$result['carPass'],
+			//'carNum'=>$result['carNum'],
+			'carLevel'=>$result['carLevel'],
+			//'suppUser'=>$result['suppUser'],
+			);
+			
+			array_push($jsonData,$m); 
+		} 
+
+		$this->addUserLog($phoneNum, "actionSearchForCollection", "收藏司机查询", $phoneNum);	
+			
+		echo CJSON::encode(new OutJson(true,'查询成功！',new Records(count($jsonData),$jsonData) ));
+		Yii::app()->end();	
+		
+	}
+
 	/**
 	 * 所有地点
 	 * */
@@ -402,7 +463,7 @@ class WebserviceController extends Controller
 			//限制查看次数
 			$userLog= UserLog::model()->findAllBySql(" SELECT distinct params FROM `user_log` where phoneNum=:phoneNum and date(createDate)=CURDATE() ",array(':phoneNum'=>$phoneNum));
 						
-			if(sizeof($userLog)  > 5){
+			if(sizeof($userLog)  > 5000){
 			
 				echo CJSON::encode(new Response(false,"抱歉，你今天查询司机的次数已经超额！")  );
 				return;	
@@ -454,7 +515,7 @@ class WebserviceController extends Controller
 
 			//短信通知
 			$order = new SubmitOrder();
-            
+            		
 			$order->uid=Date('YmdHis');
 			$order->submit_Date=Date('Y-m-d H:i:s');
 			
@@ -466,9 +527,33 @@ class WebserviceController extends Controller
 			$order->status=0;
 			//$order->remarks=$this->getKey('remarks');
 			
+			$this->addUserLog($phoneNum, "actionSubmitOrder", "提交订单",$order->driverId);		
+						
             if($order->save())
             {
-                echo CJSON::encode(new Response(true,'订单提交成功！'));	
+            	//send message
+            	$msg=new Message();
+            	
+            	$msg->title="订单提交通知";
+            	$msg->content="尊敬的用户".$order->phoneNum."，你的订单已经提交.";
+            	$msg->sendto=$order->phoneNum;
+            	$msg->level=1;
+            	$msg->status=0;
+            	$msg->createDt=Date('Y-m-d H:i:s');
+            	
+            	$msg->save();            	
+            	
+            	//短信
+             	$driver=DriverV2::model()->findByPk($order->driverId);
+            	
+             	if($driver!=null){
+
+             		$this->sendSms($driver->tel1, "用户".$order->phoneNum." 已经向你提交订单，请查看详细",$order->uid,3);
+             		
+             	}            	
+            	
+                echo CJSON::encode(new Response(true,'订单提交成功！'));	                
+                
             } else {
                 echo CJSON::encode(new Response(false,'订单提交失败！ '));	
             }		
@@ -515,6 +600,49 @@ class WebserviceController extends Controller
 			echo CJSON::encode(new Response(false,'个人信息修改失败！ '));
 		}
 				
+	}
+
+
+	/**
+	 7.获取个人信息
+	 接口关键字：Profile
+	 输入参数：手机号码MobileNumber（String），密码Password(String)
+	 输出参数：姓名Name（String），昵称（String），性别Gender（Boolean），所在城市City（String）
+	 **/
+	public function actionProfile(){
+
+		$phoneNum= $this->getNoEmpty('phoneNum');
+		$pwd= $this->getNoEmpty('pwd');
+		
+		$this->addUserLog($phoneNum, "actionProfile", "获取用户个人信息", $phoneNum);
+		
+		$criteria =new CDbCriteria(); 
+		
+		$criteria->addCondition("  phoneNum='". $phoneNum."'");
+		$criteria->addCondition("  pwd='". $pwd."'");
+		
+		$accounts=Account::model()->findAll($criteria);
+		
+		if(count($accounts)>0){
+			$rec=Profile::model()->findByPk($phoneNum);
+			if($rec==null){			
+				echo CJSON::encode(new Response(false,'用户尚未完善个人资料！'));
+			}else{
+				$m=Array(
+				'name'=>$rec->name ,
+				'userName'=>$rec->userName,
+				'sex'=>$rec->sex,
+				'address'=>$rec->address,		
+				'vip'=>$rec->vip,			
+				'qq'=>$rec->qq,
+				'email'=>$rec->email,
+				);
+			
+				echo CJSON::encode(new OutJson(true,"操作成功",$m)  );			
+			}		
+		}else{
+			echo CJSON::encode(new Response(false,'获取用户个人信息失败，用户名密码不正确！'));
+		}
 	}
 
 	/**
@@ -604,7 +732,7 @@ class WebserviceController extends Controller
 
 			echo CJSON::encode(new OutJson(true, "执行成功", new Records(sizeof($collections),$collections)) );
 	}
-
+		
 	/**
 	 11.行程记录
 	 接口关键字：OrderHistory
@@ -724,7 +852,7 @@ class WebserviceController extends Controller
 			$rec->status=1;
 			if($rec->save())
 			{
-				$this->addUserLog($phoneNum, "actionUpdateProfile", "个人信息修改", "");
+				$this->addUserLog($phoneNum, "actionUpdateNotification", "通知状态修改", "");
 					
 				echo CJSON::encode(new Response(true,'更新操作成功！'));
 			} else {
