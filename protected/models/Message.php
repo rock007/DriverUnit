@@ -43,11 +43,11 @@ class Message extends CActiveRecord
 			array('level, status', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>20),
 			array('content', 'length', 'max'=>1024),
-			array('to', 'length', 'max'=>255),
+			array('sendto', 'length', 'max'=>255),
 			array('createDt', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, content, to, level, status, createDt', 'safe', 'on'=>'search'),
+			array('id, title, content, sendto, level, status, createDt', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,7 +71,7 @@ class Message extends CActiveRecord
 			'id' => 'ID',
 			'title' => 'Title',
 			'content' => 'Content',
-			'to' => 'To',
+			'sendto' => 'SendTo',
 			'level' => 'Level',
 			'status' => 'Status',
 			'createDt' => 'Create Dt',

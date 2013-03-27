@@ -19,6 +19,10 @@ class WebserviceController extends Controller
 												array('name'=>'UpdateProfile','desc'=>'个人信息修改'),
 												
 												array('name'=>'ChangePwd','desc'=>'密码修改'),
+												
+												array('name'=>'FindPwd','desc'=>'忘记密码'),
+												
+												
 												array('name'=>'AddCollection','desc'=>'收藏'),
 												array('name'=>'CollectionHistory','desc'=>'收藏记录'),
 												array('name'=>'OrderHistory','desc'=>'行程记录'),
@@ -27,6 +31,8 @@ class WebserviceController extends Controller
 												array('name'=>'Comments','desc'=>'获取评价'),
 												array('name'=>'GetLine','desc'=>'获取所有路线'),
 												array('name'=>'Notification','desc'=>'用户通知信息'),
+												
+												array('name'=>'UpdateNotification','desc'=>'更新用户通知信息状态'),
 												
 												array('name'=>'Feedback','desc'=>'用户反馈'),
 												array('name'=>'Address','desc'=>'获取地点'),												
@@ -41,7 +47,8 @@ class WebserviceController extends Controller
 	 */
 	public function actionError()
 	{
-		echo " 出错了！".$error['message'];		
+		echo CJSON::encode(new Response(false,$error['message']));	
+		//echo " 出错了！".$error['message'];		
 	}
 
 	/**1.软件更新
@@ -393,7 +400,7 @@ class WebserviceController extends Controller
 				$this->addUserLog($phoneNum, "actionDriverDetail", "司机详细查看", $id);				
 			}			
 			//限制查看次数
-			$userLog= UserLog::model()->findAllBySql(" SELECT * FROM `user_log` where phoneNum=:phoneNum and date(createDate)=CURDATE() ",array(':phoneNum'=>$phoneNum));
+			$userLog= UserLog::model()->findAllBySql(" SELECT distinct params FROM `user_log` where phoneNum=:phoneNum and date(createDate)=CURDATE() ",array(':phoneNum'=>$phoneNum));
 						
 			if(sizeof($userLog)  > 5){
 			
@@ -425,11 +432,11 @@ class WebserviceController extends Controller
 				'address1'=>$device->address1,
 				'address2'=>$device->address2,
 				'address3'=>$device->address3,
-				//'carPic'=>$result['carPic'],
+				'carPic'=>$device->carPic,
 			
 				//'driverID'=>$result['driverID'],
 				//'carPass'=>$result['carPass'],
-				'carNum'=>$device->carNum,
+				//'carNum'=>$device->carNum,
 				'carLevel'=>$device->carLevel,
 				//'suppUser'=>$result['suppUser'],
 			);
@@ -453,11 +460,11 @@ class WebserviceController extends Controller
 			
 			$order->phoneNum=$this->getNoEmpty('phoneNum');
 			$order->driverId=$this->getNoEmpty('driverId');
-			$order->startDate=$this->getNoEmpty('startDate');
+			$order->beginDate=$this->getNoEmpty('beginDate');
 			$order->endDate=$this->getNoEmpty('endDate');
 			
 			$order->status=0;
-			$order->remarks=$this->getKey('remarks');
+			//$order->remarks=$this->getKey('remarks');
 			
             if($order->save())
             {
@@ -488,10 +495,10 @@ class WebserviceController extends Controller
 		$rec->id=$this->getNoEmpty("phoneNum");
 		$rec->name=$this->getNoEmpty("name");
 		$rec->userName=$this->getNoEmpty("userName");
-		$rec->sex=$this->getKey("sex");
+		$rec->sex=$this->getNoEmpty("sex");
 		$rec->address=$this->getKey("address");
 		$rec->createDt= Date('Y-m-d H:i:s');
-		$rec->vip=$this->getNoEmpty("vip");
+		//$rec->vip=$this->getNoEmpty("vip");
 		$rec->weixin=$this->getKey("weixin");
 		$rec->weixin_pwd=$this->getKey("weixin_pwd");
 		$rec->qq=$this->getKey("qq");
@@ -564,6 +571,12 @@ class WebserviceController extends Controller
 			$Drivercollect->remarks=$this->getKey('remarks');
 			$Drivercollect->createDt=Date('Y-m-d H:i:s');
 			
+			if(Drivercollect::model()->count(" driverId=:driverId and phoneNum=:phoneNum ",array("driverId"=>$Drivercollect->driverId,"phoneNum"=>$Drivercollect->phoneNum))>0){
+			
+				echo CJSON::encode(new Response(false,'司机已经收藏！'));
+				return;
+			}
+			
             if($Drivercollect->save())
             {
                 echo CJSON::encode(new Response(true,'收藏司机成功！'));	
@@ -628,7 +641,14 @@ class WebserviceController extends Controller
 	 		$comment->remarks=$this->getKey('remarks');
 	 		$comment->createDt=Date('Y-m-d H:i:s');
 	 		
-	 		$comment->who=$this->getKey('who');//谁评价
+	 		$comment->who=$this->getNoEmpty('who');//谁评价
+	 		
+	 		//
+	 		if(Comment::model()->count(" who=:who and refId=:refId ",array(":who"=>$comment->who,":refId"=>$comment->refId))>0){
+	 			
+	 		 	echo CJSON::encode(new Response(false,'评价已经添加！ '));	
+	 		 	return;
+	 		}	 		
 	 		
             if($comment->save())
             {
@@ -680,7 +700,7 @@ class WebserviceController extends Controller
 			$criteria =new CDbCriteria(); 
 			$phoneNum=$this->getNoEmpty('phoneNum');
 			
-			$criteria->addCondition(" 'to'  ='".$phoneNum."' ");
+			$criteria->addCondition(" sendto  ='".$phoneNum."' ");
 			$criteria->addCondition(" status =0 ");
 			
 			$criteria->order=" level desc ,id asc ";
@@ -688,6 +708,30 @@ class WebserviceController extends Controller
 			$msgList=Message::model()->findAll($criteria);
 
 			echo CJSON::encode(new OutJson(true, "操作成功", new Records(sizeof($msgList),$msgList)) );
+	}
+	
+	public function actionUpdateNotification(){
+
+		$criteria =new CDbCriteria();
+		$phoneNum=$this->getNoEmpty('phoneNum');
+			
+		$id=$this->getNoEmpty('id');
+			
+		$rec=Message::model()->findByPk($id);
+
+		if($rec!=null){
+				
+			$rec->status=1;
+			if($rec->save())
+			{
+				$this->addUserLog($phoneNum, "actionUpdateProfile", "个人信息修改", "");
+					
+				echo CJSON::encode(new Response(true,'更新操作成功！'));
+			} else {
+				echo CJSON::encode(new Response(false,'更新操作失败！ '));
+			}
+		}
+			
 	}
 	
 	/*

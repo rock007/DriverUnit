@@ -89,6 +89,26 @@
               </div>
             </div>
 			
+			
+				<div class="accordion-group">
+              <div class="accordion-heading">
+                <a href="#collapseThree" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">
+                  		司机路线
+                </a>
+              </div>
+              <div style="height: auto;" class="accordion-body in" id="collapseThree">
+                <div class="accordion-inner">
+		    
+		    <ul class="nav nav-list">
+              <li class="<?php echo navItemSelected('driverLinkLine/index'); ?>"><a href="index.php?r=driverLinkLine/index">地点列表</a></li>
+              <li class="<?php echo navItemSelected('driverLinkLine/create'); ?>"><a href="index.php?r=driverLinkLine/create">添加地点</a></li>
+              <li class="<?php echo navItemSelected('driverLinkLine/admin'); ?>"><a href="index.php?r=driverLinkLine/admin">管理地点</a></li>
+            </ul>
+
+                </div>
+              </div>
+            </div>
+			
 			</div>
 			<br>
     </div><!--/span-->
