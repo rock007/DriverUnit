@@ -407,9 +407,9 @@ class BayouSmsSender
 
 //call example 调用实例
  // $sender=new BayouSmsSender();
-  //$msg="这是个测试短信，短信内容要从非GB2312Z转化到GB2312,我们假设在UTF8环境下运行";
+ // $msg="这是个测试短信，短信内容要从非GB2312Z转化到GB2312,我们假设在UTF8环境下运行";
   
-  //$result=$sender->sendsms("800008","90bed51510b09ad5d325d8d174fa616c","13162550089,13162550089",$msg);
+ //$result=$sender->sendsms("800008","90bed51510b09ad5d325d8d174fa616c","13162550089,13162550089",$msg);
  //echo $result['status'];
  // echo $result['msg'];
 ?>

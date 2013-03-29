@@ -159,7 +159,7 @@ class WebserviceController extends Controller
             if($rec->save())
             {
             	//短信通知
-            	$this->sendSms($rec->pwd, "尊敬的".$account->phoneNum." 你的新密码为：".$rec->pwd.",请不要泄露给其他人！",$account->phoneNum,2);
+            	$this->sendSms($account->phoneNum, "尊敬的".$account->phoneNum." 你的新密码为：".$rec->pwd.",请不要泄露给其他人！",$account->phoneNum,2);
             	
                 echo CJSON::encode(new Response(true,'操作成功，请注意短信密码接收！'));	
             } else {
