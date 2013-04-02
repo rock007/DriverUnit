@@ -62,8 +62,13 @@ class WebserviceController extends Controller
 				
 		$curVer=$this->getNoEmpty('curVer');
 		
-		echo CJSON::encode(array('curVer'=>$curVer,'isNewVer'=>false,'apkUrl'=>'  '));
+		$apk="http://121.197.13.97/DriverUnit/update/zhaoni_4_1_2.apk";
 		
+		if($curVer<"4.1.2" ){
+			echo CJSON::encode(array('curVer'=>$curVer,'isNewVer'=>true,'apkUrl'=>$apk));
+		}else{
+			echo CJSON::encode(array('curVer'=>$curVer,'isNewVer'=>false,'apkUrl'=>'  '));
+		}
 	}
 
 	/**
@@ -237,6 +242,11 @@ class WebserviceController extends Controller
 		$endDate=$this->getNoEmpty('endDate');
 		$line=$this->getNoEmpty('line');
 		
+		if(strlen($startDate)!=8||strlen($endDate)!=8){
+			
+				 echo CJSON::encode(new Response(false,'请输入正确的开始时间和结束时间！ '));	
+				 return ;
+		}
 		$db = Yii::app()->db; 
 		
 		$sql=" select a.Id,driverName,secName,nation,tel1,tel2,tel3,sex,carType,carID,driverYear,carSeat,carYear,carKm,province,
@@ -310,6 +320,12 @@ class WebserviceController extends Controller
 		$endDate=$this->getNoEmpty('endDate');
 		$address=$this->getNoEmpty('address');
 		
+		if(strlen($startDate)!=8||strlen($endDate)!=8){
+			
+				 echo CJSON::encode(new Response(false,'请输入正确的开始时间和结束时间！ '));	
+				 return ;
+		}
+			
 		$db = Yii::app()->db; 
 		
 		$sql=" select Id,driverName,secName,nation,tel1,tel2,tel3,sex,carType,carID,driverYear,carSeat,carYear,carKm,province,
@@ -461,9 +477,9 @@ class WebserviceController extends Controller
 				$this->addUserLog($phoneNum, "actionDriverDetail", "司机详细查看", $id);				
 			}			
 			//限制查看次数
-			$userLog= UserLog::model()->findAllBySql(" SELECT distinct params FROM `user_log` where phoneNum=:phoneNum and date(createDate)=CURDATE() ",array(':phoneNum'=>$phoneNum));
+			$userLog= UserLog::model()->findAllBySql(" SELECT distinct params FROM `user_log` where phoneNum=:phoneNum and act='actionDriverDetail' and date(createDate)=CURDATE() ",array(':phoneNum'=>$phoneNum));
 						
-			if(sizeof($userLog)  > 5000){
+			if(sizeof($userLog)  > 5){
 			
 				echo CJSON::encode(new Response(false,"抱歉，你今天查询司机的次数已经超额！")  );
 				return;	
@@ -524,6 +540,12 @@ class WebserviceController extends Controller
 			$order->beginDate=$this->getNoEmpty('beginDate');
 			$order->endDate=$this->getNoEmpty('endDate');
 			
+			if(strlen($order->beginDate)!=8||strlen($order->endDate)!=8){
+			
+				 echo CJSON::encode(new Response(false,'请输入正确的开始时间和结束时间！ '));	
+				 return ;
+			}
+			
 			$order->status=0;
 			//$order->remarks=$this->getKey('remarks');
 			
@@ -548,7 +570,7 @@ class WebserviceController extends Controller
             	
              	if($driver!=null){
 
-             		$this->sendSms($driver->tel1, "用户".$order->phoneNum." 已经向你提交订单，请查看详细",$order->uid,3);
+             		$this->sendSms($driver->tel1, "用户".$order->phoneNum." 已经向你提交订单，希望约定您".$order->beginDate."日到".$order->endDate."日之间的行程，确认请回复".$order->id.",请查看详细.",$order->id,3);
              		
              	}            	
             	
@@ -800,7 +822,10 @@ class WebserviceController extends Controller
 			
 			$criteria->order=" id asc ";
 			
-			$comments=Comment::model()->findAll($criteria);
+			//$criteria->with=array( 'reply.name', 'reply.sex',  );   
+			
+			//$comments=Comment::model()->findAll($criteria);
+			$comments=Comment::model()->findAllBySql(" select a.id,a.mtype,a.refId,a.star,a.remarks,a.createDt,IFNULL(b.name,a.who) as who  from comment a  left outer join profile b on a.who=b.id where a.refId=:refId and a.mtype=:mtype order by a.id desc ", array("refId"=>$refId,"mtype"=>$mtype));
 
 			echo CJSON::encode(new OutJson(true, "操作成功", new Records(sizeof($comments),$comments))  );
 	}	

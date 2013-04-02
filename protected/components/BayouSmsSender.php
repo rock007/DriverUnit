@@ -57,6 +57,47 @@ class BayouSmsSender
 		 return $result;
 		}
 	}
+	
+	public function getReply($username,$password)
+	{		
+		$apidata="func=getreply&username=$username&password=$password&msgcount=1";
+		//echo $apidata;
+		$apiurl = "http://sms.c8686.com/Api/BayouSmsApiEx.aspx";
+		//echo $apiurl;
+		$ret= $this->request($apiurl,$apidata);
+
+		$doc = new DOMDocument();
+		$doc->loadXML( $ret["body"] );
+		
+		echo $ret["body"];
+
+		$msgs = $doc->getElementsByTagName( "msg" );
+		 
+		$output= array();
+		 
+		foreach( $msgs as $msg )
+		{
+			$item = array();
+			 
+			$mobileTag = $msg->getElementsByTagName( "mobile" );
+			$item["mobile"] = $mobileTag->item(0)->nodeValue;
+
+			$destmobileTag = $msg->getElementsByTagName( "destmobile" );
+			$item["destmobile"] = $destmobileTag->item(0)->nodeValue;
+
+			$contentTag = $msg->getElementsByTagName( "content" );
+			$item["content"] = $contentTag->item(0)->nodeValue;
+
+			$timeTag = $msg->getElementsByTagName( "time" );
+			$item["time"] = $timeTag->item(0)->nodeValue;
+
+			array_push($output, $item);
+		}
+
+		return $output;
+
+	}
+	
     /**
      * 构造函数
      *
@@ -408,6 +449,8 @@ class BayouSmsSender
 //call example 调用实例
  // $sender=new BayouSmsSender();
  // $msg="这是个测试短信，短信内容要从非GB2312Z转化到GB2312,我们假设在UTF8环境下运行";
+  
+ // $result=$sender->getReply("603308",md5("65460433"))
   
  //$result=$sender->sendsms("800008","90bed51510b09ad5d325d8d174fa616c","13162550089,13162550089",$msg);
  //echo $result['status'];

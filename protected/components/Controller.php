@@ -62,10 +62,13 @@ class Controller extends CController
 		return $vcodes;
 	}
 
+	
+		
 	function sendSms($mobile,$msg,$refId,$mtype){
+
 		$sms_user="603308";
-		$sms_pwd="65460433" ;//65460433 13818474956
-			
+		$sms_pwd="65460433" ;
+		
 		//"13162550089,13162550089"
 		//$msg="这是个测试短信，短信内容要从非GB2312Z转化到GB2312,我们假设在UTF8环境下运行";
 		//$change=iconv("UTF-8","GB2312",$msg);
@@ -86,6 +89,17 @@ class Controller extends CController
 		$SmsEntity->result=$result['body']."	".$result['statu'];
 		$SmsEntity->save();
   		
+	}
+	
+	function checkSms(){
+
+		$sms_user="603308";
+		$sms_pwd="65460433" ;
+		
+		$sender=new BayouSmsSender();
+		$result=$sender->getReply($sms_user,md5($sms_pwd));
+		
+		return $result;
 	}
 	
 	/**

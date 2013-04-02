@@ -1321,3 +1321,194 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/GitHub/DriverUnit/index.php?r=gii/driverLine
 ---
+2013/04/02 10:14:22 [error] [exception.CDbException] exception 'CDbException' with message '关联 "Profile" 未被定义在 active record class "Comment" 中.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php:215
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(199): CActiveFinder->buildJoinTree(Object(CJoinElement), 'Profile')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(310): CActiveFinder->buildJoinTree(Object(CJoinElement), 'Profile.name')
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1291): CActiveFinder->__construct(Object(Comment), Array)
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#5 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(810): CActiveRecord->findAll(Object(CDbCriteria))
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebserviceController->actionComments()
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Comments')
+#11 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('WebService/Comm...')
+#12 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#14 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/Comments&refId=0&mtype=100
+---
+2013/04/02 10:14:47 [error] [exception.CDbException] exception 'CDbException' with message '关联 "profile" 未被定义在 active record class "Comment" 中.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php:215
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(199): CActiveFinder->buildJoinTree(Object(CJoinElement), 'profile')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(310): CActiveFinder->buildJoinTree(Object(CJoinElement), 'profile.name')
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1291): CActiveFinder->__construct(Object(Comment), Array)
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#5 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(810): CActiveRecord->findAll(Object(CDbCriteria))
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebserviceController->actionComments()
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Comments')
+#11 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('WebService/Comm...')
+#12 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#14 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/Comments&refId=0&mtype=100
+---
+2013/04/02 10:16:47 [error] [exception.CDbException] exception 'CDbException' with message '关联 "profile" 未被定义在 active record class "Comment" 中.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php:215
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(310): CActiveFinder->buildJoinTree(Object(CJoinElement), 'profile')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1291): CActiveFinder->__construct(Object(Comment), Array)
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#4 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(810): CActiveRecord->findAll(Object(CDbCriteria))
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebserviceController->actionComments()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Comments')
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('WebService/Comm...')
+#11 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#13 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/Comments&refId=0&mtype=100
+---
+2013/04/02 10:17:51 [error] [exception.CDbException] exception 'CDbException' with message '关联 "profile" 未被定义在 active record class "Comment" 中.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php:215
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(310): CActiveFinder->buildJoinTree(Object(CJoinElement), 'profile')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1291): CActiveFinder->__construct(Object(Comment), Array)
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#4 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(810): CActiveRecord->findAll(Object(CDbCriteria))
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebserviceController->actionComments()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Comments')
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('WebService/Comm...')
+#11 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#13 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/Comments&refId=0&mtype=100
+---
+2013/04/02 10:18:47 [error] [exception.CDbException] exception 'CDbException' with message '关联 "Profile" 未被定义在 active record class "Comment" 中.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php:215
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(310): CActiveFinder->buildJoinTree(Object(CJoinElement), 'Profile')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1291): CActiveFinder->__construct(Object(Comment), Array)
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#4 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(810): CActiveRecord->findAll(Object(CDbCriteria))
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebserviceController->actionComments()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Comments')
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('WebService/Comm...')
+#11 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#13 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/Comments&refId=0&mtype=100
+---
+2013/04/02 10:24:39 [error] [exception.CDbException] exception 'CDbException' with message '关联 "name" 未被定义在 active record class "Profile" 中.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php:215
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(310): CActiveFinder->buildJoinTree(Object(CJoinElement), 'reply.name')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1291): CActiveFinder->__construct(Object(Comment), Array)
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#4 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(810): CActiveRecord->findAll(Object(CDbCriteria))
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebserviceController->actionComments()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Comments')
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('WebService/Comm...')
+#11 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#13 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/Comments&refId=0&mtype=100
+---
+2013/04/02 10:25:59 [error] [exception.CDbException] exception 'CDbException' with message '关联 "name" 未被定义在 active record class "Comment" 中.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php:215
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(310): CActiveFinder->buildJoinTree(Object(CJoinElement), 'name')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1291): CActiveFinder->__construct(Object(Comment), Array)
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#4 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(810): CActiveRecord->findAll(Object(CDbCriteria))
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebserviceController->actionComments()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Comments')
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('WebService/Comm...')
+#11 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#13 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/Comments&refId=0&mtype=100
+---
+2013/04/02 10:26:29 [error] [exception.CDbException] exception 'CDbException' with message '关联 "name" 未被定义在 active record class "Profile" 中.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php:215
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(310): CActiveFinder->buildJoinTree(Object(CJoinElement), 'reply.name')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1291): CActiveFinder->__construct(Object(Comment), Array)
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#4 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(810): CActiveRecord->findAll(Object(CDbCriteria))
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebserviceController->actionComments()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Comments')
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('WebService/Comm...')
+#11 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#13 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/Comments&refId=0&mtype=100
+---
+2013/04/02 10:26:53 [error] [exception.CDbException] exception 'CDbException' with message '关联 "id" 未被定义在 active record class "Profile" 中.' in D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php:215
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(310): CActiveFinder->buildJoinTree(Object(CJoinElement), 'reply.id')
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveFinder.php(49): CActiveFinder->buildJoinTree(Object(CJoinElement), Array)
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1291): CActiveFinder->__construct(Object(Comment), Array)
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\db\ar\CActiveRecord.php(1406): CActiveRecord->query(Object(CDbCriteria), true)
+#4 E:\GitHub\DriverUnit\protected\controllers\WebServiceController.php(810): CActiveRecord->findAll(Object(CDbCriteria))
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): WebserviceController->actionComments()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#7 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#8 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): CController->run('Comments')
+#10 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('WebService/Comm...')
+#11 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#12 E:\GitHub\DriverUnit\index.php(17): CApplication->run()
+#13 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=WebService/Comments&refId=0&mtype=100
+---
+2013/04/02 13:42:33 [error] [php] Undefined variable: sms_user (E:\GitHub\DriverUnit\protected\components\Controller.php:95)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): SmsController->runAction()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): SmsController->runActionWithFilters()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): SmsController->run()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#6 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?XDEBUG_SESSION_START=ECLIPSE_DBGP&KEY=13648812752715&r=sms
+in E:\GitHub\DriverUnit\protected\components\Controller.php (95)
+in E:\GitHub\DriverUnit\protected\controllers\SmsController.php (9)
+in E:\GitHub\DriverUnit\index.php (17)
+2013/04/02 13:45:09 [error] [php] Undefined variable: msg (E:\GitHub\DriverUnit\protected\components\BayouSmsSender.php:63)
+Stack trace:
+#0 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\actions\CInlineAction.php(50): SmsController->actionIndex()
+#1 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#2 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(287): SmsController->runAction()
+#3 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CController.php(266): SmsController->runActionWithFilters()
+#4 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(276): SmsController->run()
+#5 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#6 D:\Program Files\Apache Group\Apache2\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#7 E:\GitHub\DriverUnit\index.php(17): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?XDEBUG_SESSION_START=ECLIPSE_DBGP&KEY=13648812752715&r=sms
+in E:\GitHub\DriverUnit\protected\components\BayouSmsSender.php (63)
+in E:\GitHub\DriverUnit\protected\components\Controller.php (100)
+in E:\GitHub\DriverUnit\protected\controllers\SmsController.php (9)
