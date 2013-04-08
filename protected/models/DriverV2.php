@@ -58,6 +58,7 @@ class DriverV2 extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('driverName, secName, tel1, tel2, tel3, carType, carID, driverID, carPass, carNum', 'required'),
 			array('sex, driverYear, carSeat, carYear, carKm', 'numerical', 'integerOnly'=>true),
 			array('driverName, secName, tel1, tel2, tel3, carType, carID, driverID, carPass, carNum', 'length', 'max'=>20),
 			array('nation, carLevel', 'length', 'max'=>10),
@@ -98,7 +99,7 @@ class DriverV2 extends CActiveRecord
 			'sex' => '性别',
 			'carType' => '车型',
 			'carID' => '车牌号',
-			'driverYear' => '驾龄',
+			'driverYear' =>'驾龄',
 			'carSeat' => '座位数',
 			'carYear' => '车辆行驶年限',
 			'carKm' => '车辆公里数',

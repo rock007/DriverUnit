@@ -10,6 +10,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create DriverV2</h1>
+<h1>添加司机信息</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

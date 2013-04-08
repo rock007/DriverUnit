@@ -1512,3 +1512,55 @@ REQUEST_URI=/GitHub/DriverUnit/index.php?XDEBUG_SESSION_START=ECLIPSE_DBGP&KEY=1
 in E:\GitHub\DriverUnit\protected\components\BayouSmsSender.php (63)
 in E:\GitHub\DriverUnit\protected\components\Controller.php (100)
 in E:\GitHub\DriverUnit\protected\controllers\SmsController.php (9)
+2013/04/03 20:50:22 [error] [php] Undefined variable: mobile (E:\GitHub\DriverUnit\protected\controllers\SmsController.php:15)
+Stack trace:
+#0 D:\php\wwwroot\yii\framework\web\CController.php(287): SmsController->runAction()
+#1 D:\php\wwwroot\yii\framework\web\CController.php(266): SmsController->runActionWithFilters()
+#2 D:\php\wwwroot\yii\framework\web\CWebApplication.php(276): SmsController->run()
+#3 D:\php\wwwroot\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\php\wwwroot\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(18): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?r=Sms
+in E:\GitHub\DriverUnit\protected\controllers\SmsController.php (15)
+in E:\GitHub\DriverUnit\index.php (18)
+2013/04/03 21:52:11 [error] [system.db.CDbCommand] CDbCommand::fetch() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'refId='133'' at line 1. The SQL statement executed was: refId=:refId.
+in E:\GitHub\DriverUnit\protected\controllers\SmsController.php (23)
+in E:\GitHub\DriverUnit\index.php (18)
+2013/04/03 21:53:43 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand 无法执行 SQL 语句: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'refId='133'' at line 1. The SQL statement executed was: refId=:refId' in D:\php\wwwroot\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\php\wwwroot\yii\framework\db\CDbCommand.php(408): CDbCommand->queryInternal('fetch', Array, Array)
+#1 D:\php\wwwroot\yii\framework\db\ar\CActiveRecord.php(1494): CDbCommand->queryRow()
+#2 E:\GitHub\DriverUnit\protected\controllers\SmsController.php(23): CActiveRecord->findBySql('refId=:refId', Array)
+#3 D:\php\wwwroot\yii\framework\web\actions\CInlineAction.php(50): SmsController->actionIndex()
+#4 D:\php\wwwroot\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 D:\php\wwwroot\yii\framework\web\CController.php(287): CController->runAction(Object(CInlineAction))
+#6 D:\php\wwwroot\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\php\wwwroot\yii\framework\web\CWebApplication.php(276): CController->run('')
+#8 D:\php\wwwroot\yii\framework\web\CWebApplication.php(135): CWebApplication->runController('sms')
+#9 D:\php\wwwroot\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 E:\GitHub\DriverUnit\index.php(18): CApplication->run()
+#11 {main}
+REQUEST_URI=/GitHub/DriverUnit/index.php?XDEBUG_SESSION_START=ECLIPSE_DBGP&KEY=13649935653723&r=sms
+---
+2013/04/03 22:10:55 [error] [php] Undefined variable: mobile】已经确定，订单正式生效！ (E:\GitHub\DriverUnit\protected\controllers\SmsController.php:40)
+Stack trace:
+#0 D:\php\wwwroot\yii\framework\web\CController.php(287): SmsController->runAction()
+#1 D:\php\wwwroot\yii\framework\web\CController.php(266): SmsController->runActionWithFilters()
+#2 D:\php\wwwroot\yii\framework\web\CWebApplication.php(276): SmsController->run()
+#3 D:\php\wwwroot\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\php\wwwroot\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(18): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?XDEBUG_SESSION_START=ECLIPSE_DBGP&KEY=13649935653723&r=sms
+in E:\GitHub\DriverUnit\protected\controllers\SmsController.php (40)
+in E:\GitHub\DriverUnit\index.php (18)
+2013/04/03 22:19:35 [error] [php] Undefined variable: mobile】已经确定，订单正式生效！ (E:\GitHub\DriverUnit\protected\controllers\SmsController.php:51)
+Stack trace:
+#0 D:\php\wwwroot\yii\framework\web\CController.php(287): SmsController->runAction()
+#1 D:\php\wwwroot\yii\framework\web\CController.php(266): SmsController->runActionWithFilters()
+#2 D:\php\wwwroot\yii\framework\web\CWebApplication.php(276): SmsController->run()
+#3 D:\php\wwwroot\yii\framework\web\CWebApplication.php(135): CWebApplication->runController()
+#4 D:\php\wwwroot\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#5 E:\GitHub\DriverUnit\index.php(18): CWebApplication->run()
+REQUEST_URI=/GitHub/DriverUnit/index.php?XDEBUG_SESSION_START=ECLIPSE_DBGP&KEY=13649935653723&r=sms
+in E:\GitHub\DriverUnit\protected\controllers\SmsController.php (51)
+in E:\GitHub\DriverUnit\index.php (18)

@@ -3,17 +3,17 @@ class WebserviceController extends Controller
 {
 
 	public function actionIndex()
-	{
+	{		
 		$this->render('index',array('nav'=>array( 
 												array('name'=>'CheckVersion','desc'=>'软件更新'),
 												array('name'=>'RegisterUser','desc'=>'注册'),
 												array('name'=>'RegistForMobile','desc'=>'手机注册'),
 												
-												array('name'=>'Login','desc'=>'登录'),
+												array('name'=>'LoginUser','desc'=>'登录'),
 												array('name'=>'Search','desc'=>'搜索'),
-												array('name'=>'SearchForLine','desc'=>'按路线搜索'),
-												array('name'=>'SearchForAddress','desc'=>'按地点搜索'),
-												array('name'=>'SearchForCollection','desc'=>'按收藏搜索'),
+												array('name'=>'SearchByLine','desc'=>'按路线搜索'),
+												array('name'=>'SearchByAddress','desc'=>'按地点搜索'),
+												array('name'=>'SearchByCollection','desc'=>'按收藏搜索'),
 												
 												array('name'=>'DriverDetail','desc'=>'司机详情'),
 												array('name'=>'SubmitOrder','desc'=>'确认行程'),
@@ -62,9 +62,9 @@ class WebserviceController extends Controller
 				
 		$curVer=$this->getNoEmpty('curVer');
 		
-		$apk="http://121.197.13.97/DriverUnit/update/zhaoni_4_1_2.apk";
+		$apk="http://121.197.13.97/DriverUnit/update/zhaoni_4_7.apk";
 		
-		if($curVer<"4.1.2" ){
+		if($curVer<"7" ){
 			echo CJSON::encode(array('curVer'=>$curVer,'isNewVer'=>true,'apkUrl'=>$apk));
 		}else{
 			echo CJSON::encode(array('curVer'=>$curVer,'isNewVer'=>false,'apkUrl'=>'  '));
@@ -82,6 +82,11 @@ class WebserviceController extends Controller
 		$account = new Account();
 
 			$account->phoneNum=$this->getNoEmpty('phoneNum');
+			if(strlen($account->phoneNum)!=11){
+				
+					 echo CJSON::encode(new Response(false,'请输入正确的手机号码！ '));	
+					 return ;
+			}
 			
 			//检查是否已经存在
 			$rec=Account::model()->findByPk( $account->phoneNum);
@@ -134,7 +139,7 @@ class WebserviceController extends Controller
             if($account->save())
             {
             	//短信通知
-            	$this->sendSms($account->phoneNum, "尊敬的".$account->phoneNum."，恭喜你注册成功，账号的密码为： ".$account->pwd,$account->phoneNum,1);
+            	$this->sendSms($account->phoneNum, "尊敬的".$account->phoneNum."，恭喜您注册成功，账号的密码为： ".$account->pwd,$account->phoneNum,1);
             	
                 echo CJSON::encode(new Response(true,'注册操作成功！'));	
             } else {
@@ -164,7 +169,7 @@ class WebserviceController extends Controller
             if($rec->save())
             {
             	//短信通知
-            	$this->sendSms($account->phoneNum, "尊敬的".$account->phoneNum." 你的新密码为：".$rec->pwd.",请不要泄露给其他人！",$account->phoneNum,2);
+            	$this->sendSms($account->phoneNum, "尊敬的".$account->phoneNum." 您的新密码为：".$rec->pwd.",请不要泄露给其他人！",$account->phoneNum,2);
             	
                 echo CJSON::encode(new Response(true,'操作成功，请注意短信密码接收！'));	
             } else {
@@ -174,16 +179,16 @@ class WebserviceController extends Controller
 
 	/**
 	 3.登录
-	 接口关键字：Login
+	 接口关键字：LoginUser
 	 输入参数：手机号码MobileNumber（String），密码Password(String)
 	 输出参数：成功/失败(Boolean)；失败原因Reason（String）
 	 **/
-	public function actionLogin(){
+	public function actionLoginUser(){
 
 		$phoneNum= $this->getNoEmpty('phoneNum');
 		$pwd= $this->getNoEmpty('pwd');
 		
-		$this->addUserLog($phoneNum, "actionLogin", "用户登录", $pwd);
+		$this->addUserLog($phoneNum, "actionLoginUser", "用户登录", $pwd);
 		
 		$criteria =new CDbCriteria(); 
 		
@@ -235,7 +240,7 @@ class WebserviceController extends Controller
 	 输入参数：起始时间StartTime（Date），结束时间EndTime（Date），目的地Target（String），路线Line（String）（目的地和路线必填一个）
 	 输出参数：JSON结果（司机ID，司机称呼，车型，星级评价，路线，驾龄，所在地）；多条记录或无记录
 	 **/
-	public function actionSearchForLine(){
+	public function actionSearchByLine(){
 		
 		$phoneNum=$this->getNoEmpty('phoneNum');
 		$startDate=$this->getNoEmpty('startDate');
@@ -247,6 +252,11 @@ class WebserviceController extends Controller
 				 echo CJSON::encode(new Response(false,'请输入正确的开始时间和结束时间！ '));	
 				 return ;
 		}
+		//开始时间必须超过结束时间
+		if ($startDate > $endDate){
+			 echo CJSON::encode(new Response(false,'请输入正确的开始时间和结束时间！ '));	
+			 return ;
+		}
 		$db = Yii::app()->db; 
 		
 		$sql=" select a.Id,driverName,secName,nation,tel1,tel2,tel3,sex,carType,carID,driverYear,carSeat,carYear,carKm,province,
@@ -254,7 +264,7 @@ class WebserviceController extends Controller
 				from driverV2 a inner join driver_line b on a.id=b.driverId
 				where  b.line=:line 
 					and a.id not in(
-    					select driverid from submit_order where beginDate > :startDate  and endDate < :endDate
+    					select driverid from submit_order where not(beginDate > :endDate  or endDate < :startDate)
 				) ";		
 		
 		$results = $db->createCommand($sql)->query(array(  
@@ -299,7 +309,7 @@ class WebserviceController extends Controller
 			array_push($jsonData,$m); 
 		} 
 
-		$this->addUserLog($phoneNum, "actionSearchForLine", "司机查询", $line);	
+		$this->addUserLog($phoneNum, "actionSearchByLine", "司机查询", $line);	
 			
 		echo CJSON::encode(new OutJson(true,'查询成功！',new Records(count($jsonData),$jsonData) ));
 		Yii::app()->end();	
@@ -312,7 +322,7 @@ class WebserviceController extends Controller
 	 输入参数：起始时间StartTime（Date），结束时间EndTime（Date），目的地Target（String），路线Line（String）（目的地和路线必填一个）
 	 输出参数：JSON结果（司机ID，司机称呼，车型，星级评价，路线，驾龄，所在地）；多条记录或无记录
 	 **/
-	public function actionSearchForAddress(){
+	public function actionSearchByAddress(){
 		
 		$phoneNum=$this->getNoEmpty('phoneNum');
 		
@@ -325,6 +335,11 @@ class WebserviceController extends Controller
 				 echo CJSON::encode(new Response(false,'请输入正确的开始时间和结束时间！ '));	
 				 return ;
 		}
+		//开始时间必须超过结束时间
+		if ($startDate > $endDate){
+			 echo CJSON::encode(new Response(false,'请输入正确的开始时间和结束时间！ '));	
+			 return ;
+		}
 			
 		$db = Yii::app()->db; 
 		
@@ -332,7 +347,7 @@ class WebserviceController extends Controller
 				address,address1,address2,address3,carPic,driverID,carPass,carNum,carLevel,suppUser
 					from driverV2  where (address1 = :address or address2 = :address or address3 = :address )
 						and id not in(
-    						select driverid from submit_order where beginDate > :startDate and endDate < :endDate
+	    					select driverid from submit_order where not(beginDate > :endDate  or endDate < :startDate)
 				)";
 		
 		$results = $db->createCommand($sql)->query(array(  
@@ -378,7 +393,7 @@ class WebserviceController extends Controller
 			array_push($jsonData,$m); 
 		} 
 
-		$this->addUserLog($phoneNum, "actionSearchForAddress", "司机查询", $address);		
+		$this->addUserLog($phoneNum, "actionSearchByAddress", "司机查询", $address);		
 		//echo CJSON::encode($jsonData);
 		
 		echo CJSON::encode(new OutJson(true,'查询成功！',new Records(count($jsonData),$jsonData) ));
@@ -386,7 +401,7 @@ class WebserviceController extends Controller
 	}
 
 	//收藏司机查询
-	public function actionSearchForCollection(){
+	public function actionSearchByCollection(){
 		
 		$phoneNum=$this->getNoEmpty('phoneNum');
 		
@@ -437,7 +452,7 @@ class WebserviceController extends Controller
 			array_push($jsonData,$m); 
 		} 
 
-		$this->addUserLog($phoneNum, "actionSearchForCollection", "收藏司机查询", $phoneNum);	
+		$this->addUserLog($phoneNum, "actionSearchByCollection", "收藏司机查询", $phoneNum);	
 			
 		echo CJSON::encode(new OutJson(true,'查询成功！',new Records(count($jsonData),$jsonData) ));
 		Yii::app()->end();	
@@ -467,7 +482,7 @@ class WebserviceController extends Controller
 	 **/
 	public function actionDriverDetail(){
 			
-			$id=$this->getNoEmpty('id');
+			$id=$this->getNoEmpty('driverId');
 			$phoneNum=$this->getNoEmpty("phoneNum");
 									
 			$device=DriverV2::model()->findByPk($id);
@@ -475,16 +490,20 @@ class WebserviceController extends Controller
 			if($device!=null){			
 				//记录操作
 				$this->addUserLog($phoneNum, "actionDriverDetail", "司机详细查看", $id);				
-			}			
-			//限制查看次数
-			$userLog= UserLog::model()->findAllBySql(" SELECT distinct params FROM `user_log` where phoneNum=:phoneNum and act='actionDriverDetail' and date(createDate)=CURDATE() ",array(':phoneNum'=>$phoneNum));
-						
-			if(sizeof($userLog)  > 5){
-			
-				echo CJSON::encode(new Response(false,"抱歉，你今天查询司机的次数已经超额！")  );
-				return;	
 			}
-			
+			//判断是否为收藏司机
+			$driverCollect = Drivercollect::model()->findAllBySql(" SELECT driverId FROM drivercollect where phoneNum=:phoneNum and driverId=:id ",array(':phoneNum'=>$phoneNum, ':id'=>$id));
+			if(sizeof($driverCollect) < 1){					
+						
+				//限制查看次数
+				$userLog= UserLog::model()->findAllBySql(" SELECT distinct params FROM `user_log` where phoneNum=:phoneNum and act='actionDriverDetail' and date(createDate)=CURDATE() ",array(':phoneNum'=>$phoneNum));
+							
+				if(sizeof($userLog)  > 5){
+				
+					echo CJSON::encode(new Response(false,"抱歉，您今天查询司机的次数已经超额！")  );
+					return;	
+				}
+			}			
 			//echo CJSON::encode($device);
 			
 			$m=Array(
@@ -537,11 +556,15 @@ class WebserviceController extends Controller
 			
 			$order->phoneNum=$this->getNoEmpty('phoneNum');
 			$order->driverId=$this->getNoEmpty('driverId');
-			$order->beginDate=$this->getNoEmpty('beginDate');
+			$order->beginDate=$this->getNoEmpty('startDate');
 			$order->endDate=$this->getNoEmpty('endDate');
 			
-			if(strlen($order->beginDate)!=8||strlen($order->endDate)!=8){
-			
+			if(strlen($order->beginDate)!=8||strlen($order->endDate)!=8){	
+				 echo CJSON::encode(new Response(false,'请输入正确的开始时间和结束时间！ '));	
+				 return ;
+			}
+			//开始时间必须超过结束时间
+			if ($order->beginDate > $order->endDate){
 				 echo CJSON::encode(new Response(false,'请输入正确的开始时间和结束时间！ '));	
 				 return ;
 			}
@@ -549,32 +572,42 @@ class WebserviceController extends Controller
 			$order->status=0;
 			//$order->remarks=$this->getKey('remarks');
 			
-			$this->addUserLog($phoneNum, "actionSubmitOrder", "提交订单",$order->driverId);		
-						
+			$this->addUserLog($order->phoneNum, "actionSubmitOrder", "提交订单",$order->driverId);		
+			
+			//检查订单时间是否符合需求
+			$oldorder = SubmitOrder::model()->findAllBySql(" SELECT uid FROM submit_order where driverid=:id and NOT( :endDate< beginDate or :startDate >endDate) "
+				,array(':id'=>$order->driverId, ':endDate'=>$order->endDate, ':startDate'=>$order->beginDate,));
+			if(sizeof($oldorder) > 0){					
+				 echo CJSON::encode(new Response(false,'该司机已被预订，请修改时间或联系其他司机'));	
+				 return ;
+			}	
+									
             if($order->save())
             {
             	//send message
+            	/***
             	$msg=new Message();
             	
             	$msg->title="订单提交通知";
-            	$msg->content="尊敬的用户".$order->phoneNum."，你的订单已经提交.";
+            	$msg->content="尊敬的用户".$order->phoneNum."，您的订单提交成功，已经短信联系司机师傅，司机确认后会及时通知到您";
             	$msg->sendto=$order->phoneNum;
             	$msg->level=1;
             	$msg->status=0;
             	$msg->createDt=Date('Y-m-d H:i:s');
             	
             	$msg->save();            	
-            	
+            	***/
             	//短信
              	$driver=DriverV2::model()->findByPk($order->driverId);
             	
              	if($driver!=null){
 
-             		$this->sendSms($driver->tel1, "用户".$order->phoneNum." 已经向你提交订单，希望约定您".$order->beginDate."日到".$order->endDate."日之间的行程，确认请回复".$order->id.",请查看详细.",$order->id,3);
-             		
+             		$this->sendSms($driver->tel1, "用户".$order->phoneNum." 已经向您提交订单，希望约定您".$order->beginDate."日到".$order->endDate."日之间的行程，如已收到用户定金，请在三天内回复".$order->id
+             			,$order->id,3);
+
              	}            	
             	
-                echo CJSON::encode(new Response(true,'订单提交成功！'));	                
+                echo CJSON::encode(new Response(true,'订单提交成功，已经短信联系司机师傅，司机确认后会及时通知到您！'));	                
                 
             } else {
                 echo CJSON::encode(new Response(false,'订单提交失败！ '));	

@@ -60,7 +60,7 @@ class BayouSmsSender
 	
 	public function getReply($username,$password)
 	{		
-		$apidata="func=getreply&username=$username&password=$password&msgcount=1";
+		$apidata="func=getreply&username=$username&password=$password&msgcount=10";
 		//echo $apidata;
 		$apiurl = "http://sms.c8686.com/Api/BayouSmsApiEx.aspx";
 		//echo $apiurl;

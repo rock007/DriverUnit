@@ -27,7 +27,7 @@ class DriverV2Controller extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','AddDriver'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -74,6 +74,36 @@ class DriverV2Controller extends Controller
 			$model->attributes=$_POST['DriverV2'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->Id));
+		}
+
+		$this->render('create',array(
+			'model'=>$model,
+		));
+	}
+	
+	/**
+	 * Creates a new model.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
+	 */
+	public function actionAddDriver()
+	{
+		$model=new DriverV2;
+
+		$this->layout="//layouts/main";
+		
+		// Uncomment the following line if AJAX validation is needed
+		$this->performAjaxValidation($model);
+
+		//$this->setCurPg('driverV2/create');
+
+		if(isset($_POST['DriverV2']))
+		{
+			$model->attributes=$_POST['DriverV2'];
+			if($model->save()){
+				
+				//$this->redirect(array('view','id'=>$model->Id));
+				$model=new DriverV2;
+			}
 		}
 
 		$this->render('create',array(
